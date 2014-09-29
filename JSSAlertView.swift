@@ -30,7 +30,7 @@ class JSSAlertView: UIViewController {
     let textFont = "HelveticaNeue"
     let buttonFont = "HelveticaNeue-Bold"
     
-    var windowColor = UIColorFromHex(0xecf0f1, alpha: 1)
+    var defaultColor = UIColorFromHex(0x34495e, alpha: 1)
     var darkTextColor = UIColorFromHex(0x000000, alpha: 0.75)
     var lightTextColor = UIColorFromHex(0xffffff, alpha: 0.9)
     
@@ -172,8 +172,7 @@ class JSSAlertView: UIViewController {
         var baseColor = color
         var textColor = self.lightTextColor
         if baseColor == nil {
-            baseColor = self.windowColor
-            textColor = self.darkTextColor
+            baseColor = self.defaultColor
         }
         
         let sz = UIScreen.mainScreen().bounds.size
