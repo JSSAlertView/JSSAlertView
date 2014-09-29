@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xth-ZC-yov">
-                                <rect key="frame" x="197" y="100" width="206" height="30"/>
+                                <rect key="frame" x="197" y="40" width="206" height="30"/>
                                 <state key="normal" title="Really, Really Basic Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -26,7 +27,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajf-Do-GSb">
-                                <rect key="frame" x="216" y="180" width="168" height="30"/>
+                                <rect key="frame" x="216" y="120" width="168" height="30"/>
                                 <state key="normal" title="Custom Color Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -35,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Oy-nU-S6A">
-                                <rect key="frame" x="220" y="220" width="160" height="30"/>
+                                <rect key="frame" x="220" y="160" width="160" height="30"/>
                                 <state key="normal" title="Custom Icon Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -44,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZ2-66-VsE">
-                                <rect key="frame" x="234" y="300" width="131" height="30"/>
+                                <rect key="frame" x="234" y="240" width="131" height="30"/>
                                 <state key="normal" title="Success Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -53,7 +54,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDY-BC-Oow">
-                                <rect key="frame" x="236" y="340" width="129" height="30"/>
+                                <rect key="frame" x="236" y="280" width="129" height="30"/>
                                 <state key="normal" title="Warning Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -62,7 +63,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="131" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgV-Ya-MB6">
-                                <rect key="frame" x="230.5" y="140" width="139" height="30"/>
+                                <rect key="frame" x="230.5" y="80" width="139" height="30"/>
                                 <state key="normal" title="Standard Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -71,7 +72,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEd-G8-ELM">
-                                <rect key="frame" x="239" y="380" width="122" height="30"/>
+                                <rect key="frame" x="239" y="320" width="122" height="30"/>
                                 <state key="normal" title="Danger Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -80,7 +81,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d5-SM-E9D">
-                                <rect key="frame" x="225" y="420" width="159" height="30"/>
+                                <rect key="frame" x="220.5" y="360" width="159" height="30"/>
                                 <state key="normal" title="Kitchen Sink Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -90,7 +91,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY0-MD-Q3j">
-                                <rect key="frame" x="250" y="260" width="99" height="30"/>
+                                <rect key="frame" x="250" y="200" width="99" height="30"/>
                                 <state key="normal" title="Info Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -101,31 +102,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xth-ZC-yov" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="80" id="3ks-VA-Zfh"/>
-                            <constraint firstAttribute="centerX" secondItem="yEd-G8-ELM" secondAttribute="centerX" constant="-0.5" id="4n3-tz-2ee"/>
+                            <constraint firstAttribute="centerX" secondItem="rgV-Ya-MB6" secondAttribute="centerX" id="2cQ-QP-PWT"/>
+                            <constraint firstItem="Xth-ZC-yov" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="3ks-VA-Zfh"/>
+                            <constraint firstAttribute="centerX" secondItem="yEd-G8-ELM" secondAttribute="centerX" id="4n3-tz-2ee"/>
                             <constraint firstItem="RDY-BC-Oow" firstAttribute="top" secondItem="WZ2-66-VsE" secondAttribute="bottom" constant="10" id="5pC-PL-fkg"/>
-                            <constraint firstAttribute="centerX" secondItem="rgV-Ya-MB6" secondAttribute="centerX" id="8ES-jY-Yuc"/>
                             <constraint firstItem="3Oy-nU-S6A" firstAttribute="top" secondItem="ajf-Do-GSb" secondAttribute="bottom" constant="10" id="FdB-7a-c42"/>
                             <constraint firstAttribute="centerX" secondItem="WZ2-66-VsE" secondAttribute="centerX" id="GaA-w1-4Se"/>
                             <constraint firstItem="WZ2-66-VsE" firstAttribute="top" secondItem="xY0-MD-Q3j" secondAttribute="bottom" constant="10" id="Lbj-dW-KfW"/>
-                            <constraint firstItem="WZ2-66-VsE" firstAttribute="top" secondItem="3Oy-nU-S6A" secondAttribute="bottom" constant="10" id="UNe-dD-p1I"/>
                             <constraint firstAttribute="centerX" secondItem="3Oy-nU-S6A" secondAttribute="centerX" id="VH2-Pu-TaC"/>
                             <constraint firstItem="yEd-G8-ELM" firstAttribute="top" secondItem="RDY-BC-Oow" secondAttribute="bottom" constant="10" id="Z8G-cG-U0G"/>
                             <constraint firstItem="xY0-MD-Q3j" firstAttribute="top" secondItem="3Oy-nU-S6A" secondAttribute="bottom" constant="10" id="ZUl-gT-ia5"/>
+                            <constraint firstItem="rgV-Ya-MB6" firstAttribute="top" secondItem="Xth-ZC-yov" secondAttribute="bottom" constant="10" id="a5A-bq-xy0"/>
                             <constraint firstItem="0d5-SM-E9D" firstAttribute="top" secondItem="yEd-G8-ELM" secondAttribute="bottom" constant="10" id="dAY-cV-uId"/>
-                            <constraint firstAttribute="centerX" secondItem="0d5-SM-E9D" secondAttribute="centerX" constant="-4.5" id="hyA-qJ-HVg"/>
+                            <constraint firstAttribute="centerX" secondItem="0d5-SM-E9D" secondAttribute="centerX" id="hyA-qJ-HVg"/>
                             <constraint firstAttribute="centerX" secondItem="Xth-ZC-yov" secondAttribute="centerX" id="llH-km-Kbu"/>
                             <constraint firstItem="ajf-Do-GSb" firstAttribute="top" secondItem="rgV-Ya-MB6" secondAttribute="bottom" constant="10" id="mPi-UR-h6Q"/>
                             <constraint firstAttribute="centerX" secondItem="ajf-Do-GSb" secondAttribute="centerX" id="nHI-36-o7h"/>
-                            <constraint firstAttribute="centerX" secondItem="xY0-MD-Q3j" secondAttribute="centerX" constant="0.5" id="nOv-8Q-yF4"/>
-                            <constraint firstItem="rgV-Ya-MB6" firstAttribute="top" secondItem="Xth-ZC-yov" secondAttribute="bottom" constant="10" id="nfp-i3-r7f"/>
-                            <constraint firstAttribute="centerX" secondItem="RDY-BC-Oow" secondAttribute="centerX" constant="-0.5" id="ydI-A3-RRn"/>
+                            <constraint firstAttribute="centerX" secondItem="xY0-MD-Q3j" secondAttribute="centerX" id="nOv-8Q-yF4"/>
+                            <constraint firstAttribute="centerX" secondItem="RDY-BC-Oow" secondAttribute="centerX" id="ydI-A3-RRn"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="UNe-dD-p1I"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
