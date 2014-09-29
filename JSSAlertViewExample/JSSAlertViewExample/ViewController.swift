@@ -54,6 +54,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func kitchenSinkAlertViewButtonPress() {
+        var customIcon = UIImage(named: "lightbulb")
+        JSSAlertView().show(self, title: "Kitchen sink", modalText: "Here's a modal alert with descriptive text, an icon, and a custom color", buttonText: "Sweet", color: UIColorFromHex(0x9b59b6, alpha: 1), iconImage: customIcon)
     }
 }
 
