@@ -62,15 +62,6 @@
                                     <action selector="warningAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2gm-A9-qbw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="131" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgV-Ya-MB6">
-                                <rect key="frame" x="230.5" y="80" width="139" height="30"/>
-                                <state key="normal" title="Standard Alert View">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="standardAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KLl-Za-8V6"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEd-G8-ELM">
                                 <rect key="frame" x="239" y="320" width="122" height="30"/>
                                 <state key="normal" title="Danger Alert View">
@@ -81,7 +72,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d5-SM-E9D">
-                                <rect key="frame" x="220.5" y="360" width="159" height="30"/>
+                                <rect key="frame" x="220" y="360" width="159" height="30"/>
                                 <state key="normal" title="Kitchen Sink Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -99,10 +90,19 @@
                                     <action selector="infoAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="g4h-mP-pS8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgV-Ya-MB6">
+                                <rect key="frame" x="231" y="80" width="136" height="30"/>
+                                <state key="normal" title="Standard Alert View">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="standardAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KLl-Za-8V6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="rgV-Ya-MB6" secondAttribute="centerX" id="2cQ-QP-PWT"/>
+                            <constraint firstAttribute="centerX" secondItem="rgV-Ya-MB6" secondAttribute="centerX" constant="1" id="0Uo-sy-Sl3"/>
                             <constraint firstItem="Xth-ZC-yov" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="3ks-VA-Zfh"/>
                             <constraint firstAttribute="centerX" secondItem="yEd-G8-ELM" secondAttribute="centerX" id="4n3-tz-2ee"/>
                             <constraint firstItem="RDY-BC-Oow" firstAttribute="top" secondItem="WZ2-66-VsE" secondAttribute="bottom" constant="10" id="5pC-PL-fkg"/>
