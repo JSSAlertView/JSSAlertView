@@ -166,26 +166,30 @@ class JSSAlertView: UIViewController {
     
     
     
-    func info(viewController: UIViewController, title: String) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: nil, buttonText: nil, color: UIColorFromHex(0x3498db, alpha: 1))
+    func info(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0x3498db, alpha: 1))
     }
     
-    func success(viewController: UIViewController, title: String) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: nil, buttonText: nil, color: UIColorFromHex(0x2ecc71, alpha: 1))
+    func success(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0x2ecc71, alpha: 1))
     }
     
-    func warning(viewController: UIViewController, title: String) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: nil, buttonText: nil, color: UIColorFromHex(0xf1c40f, alpha: 1))
+    func warning(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0xf1c40f, alpha: 1))
     }
     
-    func danger(viewController: UIViewController, title: String) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: nil, buttonText: nil, color: UIColorFromHex(0xe74c3c, alpha: 1))
+    func danger(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0xe74c3c, alpha: 1))
     }
     
     
 
     func show(viewController: UIViewController, title:String) -> JSSAlertViewResponder {
         return self.show(viewController, title: title, modalText: nil, buttonText: nil, color: nil)
+    }
+    
+    func show(viewController: UIViewController, title:String, modalText:String) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: nil)
     }
     
     func show(viewController: UIViewController, title:String, modalText: String?, buttonText: String?) -> JSSAlertViewResponder {

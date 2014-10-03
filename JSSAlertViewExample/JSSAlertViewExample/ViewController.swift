@@ -37,20 +37,27 @@ class ViewController: UIViewController {
         JSSAlertView().show(self, title: "Custom icon", modalText: "Supply a UIImage as the iconImage for sexy results", buttonText: "Yes", color: nil, iconImage: customIcon)
     }
 
+    @IBAction func customFontsAlertButtonPress() {
+        var alertview = JSSAlertView().show(self, title: "Check it out", modalText: "This alert is using a custom font: Clear Sans to be specific")
+        alertview.setTitleFont("ClearSans-Light")
+        alertview.setTextFont("ClearSans")
+        alertview.setButtonFont("ClearSans-Bold")
+    }
+    
     @IBAction func infoAlertButtonPress() {
-        JSSAlertView().info(self, title: "Heads up!")
+        JSSAlertView().info(self, title: "Heads up!", modalText: "This is the built-in .info style")
     }
     
     @IBAction func successAlertButtonPress() {
-        JSSAlertView().success(self, title: "Great success")
+        JSSAlertView().success(self, title: "Great success", modalText: "This is the built-in .success style")
     }
     
     @IBAction func warningAlertButtonPress() {
-        JSSAlertView().warning(self, title: "Take warning")
+        JSSAlertView().warning(self, title: "Take warning", modalText: "This is the built-in .warning style")
     }
     
     @IBAction func dangerAlertButtonPress() {
-        JSSAlertView().danger(self, title: "Oh, shit.")
+        JSSAlertView().danger(self, title: "Oh, shit.", modalText: "This is the built-in .danger style")
     }
     
     @IBAction func kitchenSinkAlertViewButtonPress() {
