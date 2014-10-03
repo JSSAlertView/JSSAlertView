@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func customColorAlertButtonPress() {
-        JSSAlertView().show(self, title: "Custom color", modalText: "Purple alerts are the new transparent white alerts are the new gradient-laden alerts", buttonText: "Whoa", color: UIColorFromHex(0x9b59b6, alpha: 1))
+        JSSAlertView().show(self, title: "Custom color", modalText: "All of the cool kids have purple alerts these days", buttonText: "Whoa", color: UIColorFromHex(0x9b59b6, alpha: 1))
     }
     
     @IBAction func customIconAlertButtonPress() {
@@ -62,7 +62,10 @@ class ViewController: UIViewController {
     
     @IBAction func kitchenSinkAlertViewButtonPress() {
         var customIcon = UIImage(named: "lightbulb")
-        JSSAlertView().show(self, title: "Kitchen sink", modalText: "Here's a modal alert with descriptive text, an icon, and a custom color", buttonText: "Sweet", color: UIColorFromHex(0x9b59b6, alpha: 1), iconImage: customIcon)
+        var alertview = JSSAlertView().show(self, title: "Kitchen sink", modalText: "Here's a modal alert with descriptive text, an icon, custom fonts and a custom color", buttonText: "Sweet", color: UIColorFromHex(0xE0107A, alpha: 1), iconImage: customIcon)
+        alertview.setTitleFont("ClearSans-Light")
+        alertview.setTextFont("ClearSans")
+        alertview.setButtonFont("ClearSans-Bold")
     }
 }
 
