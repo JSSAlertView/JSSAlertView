@@ -209,7 +209,7 @@ class JSSAlertView: UIViewController {
         // Title
         self.modalTitleLabel = UILabel()
         modalTitleLabel.textColor = textColor
-        modalTitleLabel.numberOfLines = 1
+        modalTitleLabel.numberOfLines = 0
         modalTitleLabel.textAlignment = .Center
         modalTitleLabel.font = UIFont(name: self.titleFont, size: 24)
         modalTitleLabel.text = title

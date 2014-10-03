@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func basicAlertButtonPress() {
-        JSSAlertView().show(self, title: "Boring and basic")
+        JSSAlertView().show(self, title: "Boring and basic, but with a multi-line title")
     }
 
     @IBAction func standardAlertButtonPress() {
