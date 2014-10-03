@@ -29,12 +29,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func customColorAlertButtonPress() {
-        JSSAlertView().show(self, title: "Custom color", text: "All of the cool kids have purple alerts these days", buttonText: "Whoa", color: UIColorFromHex(0x9b59b6, alpha: 1))
+        var alertview = JSSAlertView().show(self, title: "Custom color", text: "All of the cool kids have purple alerts these days", buttonText: "Whoa", color: UIColorFromHex(0x9b59b6, alpha: 1))
+        alertview.setTextTheme(.Light)
     }
     
     @IBAction func customIconAlertButtonPress() {
         var customIcon = UIImage(named: "lightbulb")
-        JSSAlertView().show(self, title: "Custom icon", text: "Supply a UIImage as the iconImage for sexy results", buttonText: "Yes", color: nil, iconImage: customIcon)
+        var alertview = JSSAlertView().show(self, title: "Custom icon", text: "Supply a UIImage as the iconImage for sexy results", buttonText: "Yes", color: UIColorFromHex(0x9b59b6, alpha: 1), iconImage: customIcon)
+        alertview.setTextTheme(.Light)
     }
 
     @IBAction func customFontsAlertButtonPress() {
@@ -66,6 +68,7 @@ class ViewController: UIViewController {
         alertview.setTitleFont("ClearSans-Bold")
         alertview.setTextFont("ClearSans")
         alertview.setButtonFont("ClearSans-Light")
+        alertview.setTextTheme(.Light)
     }
 }
 

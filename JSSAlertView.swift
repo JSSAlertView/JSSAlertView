@@ -32,7 +32,7 @@ class JSSAlertView: UIViewController {
     var textFont = "HelveticaNeue"
     var buttonFont = "HelveticaNeue-Bold"
     
-    var defaultColor = UIColorFromHex(0x34495e, alpha: 1)
+    var defaultColor = UIColorFromHex(0xF2F4F4, alpha: 1)
     
     enum TextColorTheme {
         case Dark, Light
@@ -72,8 +72,8 @@ class JSSAlertView: UIViewController {
             self.alertview.setFont(fontStr, type: .Button)
         }
         
-        func setTextTheme(scheme: TextColorTheme) {
-            self.alertview.setTextTheme(scheme)
+        func setTextTheme(theme: TextColorTheme) {
+            self.alertview.setTextTheme(theme)
         }
         
         func close() {
@@ -188,7 +188,9 @@ class JSSAlertView: UIViewController {
     
     
     func info(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0x3498db, alpha: 1))
+        var alertview = self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0x3498db, alpha: 1))
+        alertview.setTextTheme(.Light)
+        return alertview
     }
     
     func success(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
@@ -196,13 +198,13 @@ class JSSAlertView: UIViewController {
     }
     
     func warning(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
-        var alertview = self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0xf1c40f, alpha: 1))
-        alertview.setTextTheme(.Dark)
-        return alertview
+        return self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0xf1c40f, alpha: 1))
     }
     
     func danger(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0xe74c3c, alpha: 1))
+        var alertview = self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0xe74c3c, alpha: 1))
+        alertview.setTextTheme(.Light)
+        return alertview
     }
     
     func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
@@ -211,7 +213,7 @@ class JSSAlertView: UIViewController {
         self.rootViewController.addChildViewController(self)
         self.rootViewController.view.addSubview(view)
         
-        self.view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.4)
+        self.view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
         
         var baseColor:UIColor?
         if let customColor = color {
@@ -219,7 +221,7 @@ class JSSAlertView: UIViewController {
         } else {
             baseColor = self.defaultColor
         }
-        var textColor = self.lightTextColor
+        var textColor = self.darkTextColor
         
         let sz = UIScreen.mainScreen().bounds.size
         self.viewWidth = sz.width
@@ -288,8 +290,8 @@ class JSSAlertView: UIViewController {
             self.view.alpha = 1
         })
         self.containerView.frame.origin.x = self.rootViewController.view.center.x
-        self.containerView.frame.origin.y = self.rootViewController.view.center.y - 100
-        UIView.animateWithDuration(0.75, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: nil, animations: {
+        self.containerView.center.y = -500
+        UIView.animateWithDuration(0.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: nil, animations: {
             self.containerView.center = self.rootViewController.view.center
             }, completion: { finished in
                 
