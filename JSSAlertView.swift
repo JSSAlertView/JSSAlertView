@@ -95,24 +95,23 @@ class JSSAlertView: UIViewController {
         }
         
         // position title
-        let tString = modalTitleLabel.text! as NSString
-        let tAttr = [NSFontAttributeName:modalTitleLabel.font]
-        let tSize = CGSize(width: contentWidth, height: 90)
-        let tRect = tString.boundingRectWithSize(tSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: tAttr, context: nil)
+        let titleString = modalTitleLabel.text! as NSString
+        let titleAttr = [NSFontAttributeName:modalTitleLabel.font]
+        let titleSize = CGSize(width: contentWidth, height: 90)
+        let titleRect = titleString.boundingRectWithSize(titleSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: titleAttr, context: nil)
         yPos += modalPadding
-        self.modalTitleLabel.frame = CGRect(x: self.modalPadding, y: yPos, width: self.modalWidth - (self.modalPadding*2), height: ceil(tRect.size.height))
-        yPos += ceil(tRect.size.height)
+        self.modalTitleLabel.frame = CGRect(x: self.modalPadding, y: yPos, width: self.modalWidth - (self.modalPadding*2), height: ceil(titleRect.size.height))
+        yPos += ceil(titleRect.size.height)
         
         
         // position text
         if self.modalTextView != nil {
-            let txString = modalTextView.text! as NSString
-            let txAttr = [NSFontAttributeName:modalTextView.font]
-            let txSize = CGSize(width: contentWidth, height: 32)
-            let txRect = tString.boundingRectWithSize(txSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: txAttr, context: nil)
-            
-            self.modalTextView.frame = CGRect(x: self.modalPadding, y: yPos, width: self.modalWidth - (self.modalPadding*2), height: ceil(tRect.size.height)*2)
-            yPos += ceil(tRect.size.height) + modalPadding
+            let textString = modalTextView.text! as NSString
+            let textAttr = [NSFontAttributeName:modalTextView.font]
+            let textSize = CGSize(width: contentWidth, height: 90)
+            let textRect = textString.boundingRectWithSize(textSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: textAttr, context: nil)
+            self.modalTextView.frame = CGRect(x: self.modalPadding, y: yPos, width: self.modalWidth - (self.modalPadding*2), height: ceil(textRect.size.height)*2)
+            yPos += ceil(textRect.size.height) + modalPadding/2
         }
         
         
