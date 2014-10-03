@@ -26,11 +26,18 @@ class JSSAlertView: UIViewController {
     var iconImageView:UIImageView!
     var closeAction:(()->Void)!
     
-    let titleFont = "HelveticaNeue-Light"
-    let textFont = "HelveticaNeue"
-    let buttonFont = "HelveticaNeue-Bold"
+    enum FontType {
+        case Title, Text, Button
+    }
+    var titleFont = "HelveticaNeue-Light"
+    var textFont = "HelveticaNeue"
+    var buttonFont = "HelveticaNeue-Bold"
     
     var defaultColor = UIColorFromHex(0x34495e, alpha: 1)
+    
+    enum TextColor {
+        case Dark, Light
+    }
     var darkTextColor = UIColorFromHex(0x000000, alpha: 0.75)
     var lightTextColor = UIColorFromHex(0xffffff, alpha: 0.9)
     
@@ -55,9 +62,39 @@ class JSSAlertView: UIViewController {
             self.alertview.addAction(action)
         }
         
+        func setTitleFont(fontStr: String) {
+            self.alertview.setFont(fontStr, type: .Title)
+        }
+        
+        func setTextFont(fontStr: String) {
+            self.alertview.setFont(fontStr, type: .Text)
+        }
+        
+        func setButtonFont(fontStr: String) {
+            self.alertview.setFont(fontStr, type: .Button)
+        }
+        
         func close() {
             self.alertview.closeView()
         }
+    }
+    
+    func setFont(fontStr: String, type: FontType) {
+        switch type {
+            case .Title:
+                self.titleFont = fontStr
+                self.modalTitleLabel.font = UIFont(name: self.titleFont, size: 24)
+            case .Text:
+                if self.modalTextView != nil {
+                    self.textFont = fontStr
+                    self.modalTextView.font = UIFont(name: self.textFont, size: 16)
+                }
+            case .Button:
+                self.buttonFont = fontStr
+                self.buttonLabel.font = UIFont(name: self.buttonFont, size: 20)
+        }
+        // relayout to account for size changes
+        self.viewDidLayoutSubviews()
     }
     
     required init(coder aDecoder: NSCoder) {
