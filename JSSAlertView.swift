@@ -131,7 +131,7 @@ class JSSAlertView: UIViewController {
             yPos += modalPadding
         }
         
-        // position title
+        // position the title
         let titleString = modalTitleLabel.text! as NSString
         let titleAttr = [NSFontAttributeName:modalTitleLabel.font]
         let titleSize = CGSize(width: contentWidth, height: 90)
@@ -151,7 +151,7 @@ class JSSAlertView: UIViewController {
             yPos += ceil(textRect.size.height) + modalPadding/2
         }
         
-        
+        // position the button
         yPos += self.modalPadding
         self.modalButton.frame = CGRect(x: 0, y: yPos, width: self.modalWidth, height: self.buttonHeight)
         if self.buttonLabel != nil {
@@ -159,49 +159,32 @@ class JSSAlertView: UIViewController {
         }
         yPos += self.buttonHeight
         
+        // size the background view
         self.modalBackgroundView.frame = CGRect(x: 0, y: 0, width: self.modalWidth, height: yPos)
         
+        // size the container that holds everything together
         self.containerView.frame = CGRect(x: (self.viewWidth!-self.modalWidth)/2, y: (self.viewHeight! - yPos)/2, width: self.modalWidth, height: yPos)
     }
     
     
     
-    func info(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0x3498db, alpha: 1))
+    func info(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0x3498db, alpha: 1))
     }
     
-    func success(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0x2ecc71, alpha: 1))
+    func success(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0x2ecc71, alpha: 1))
     }
     
-    func warning(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0xf1c40f, alpha: 1))
+    func warning(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0xf1c40f, alpha: 1))
     }
     
-    func danger(viewController: UIViewController, title: String, modalText: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: UIColorFromHex(0xe74c3c, alpha: 1))
+    func danger(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0xe74c3c, alpha: 1))
     }
     
-    
-
-    func show(viewController: UIViewController, title:String) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: nil, buttonText: nil, color: nil)
-    }
-    
-    func show(viewController: UIViewController, title:String, modalText:String) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: nil)
-    }
-    
-    func show(viewController: UIViewController, title:String, modalText: String?, buttonText: String?) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, modalText: modalText, buttonText: nil, color: nil)
-    }
-    
-    func show(viewController: UIViewController, title: String, modalText: String?, buttonText: String?, color: UIColor?, iconImage: UIImage?) -> JSSAlertViewResponder {
-        self.iconImage = iconImage
-        return self.show(viewController, title: title, modalText: modalText, buttonText: buttonText, color: color)
-    }
-    
-    func show(viewController: UIViewController, title: String, modalText: String?, buttonText: String?, color: UIColor?) -> JSSAlertViewResponder {
+    func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
         
         self.rootViewController = viewController
         self.rootViewController.addChildViewController(self)
@@ -209,24 +192,56 @@ class JSSAlertView: UIViewController {
         
         self.view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.4)
         
-        var baseColor = color
-        var textColor = self.lightTextColor
-        if baseColor == nil {
+        var baseColor:UIColor?
+        if let customColor = color {
+            baseColor = customColor
+        } else {
             baseColor = self.defaultColor
         }
+        var textColor = self.lightTextColor
         
         let sz = UIScreen.mainScreen().bounds.size
         self.viewWidth = sz.width
         self.viewHeight = sz.height
         
+        // Container for the entire alert modal contents
         self.containerView = UIView()
         self.view.addSubview(self.containerView!)
         
+        // Background view/main color
         self.modalBackgroundView = UIView()
         modalBackgroundView.backgroundColor = baseColor
         modalBackgroundView.layer.cornerRadius = 4
         modalBackgroundView.layer.masksToBounds = true
         self.containerView.addSubview(modalBackgroundView!)
+        
+        // Icon
+        self.iconImage = iconImage
+        if self.iconImage != nil {
+            self.iconImageView = UIImageView(image: self.iconImage)
+            self.containerView.addSubview(iconImageView)
+        }
+        
+        // Title
+        self.modalTitleLabel = UILabel()
+        modalTitleLabel.textColor = textColor
+        modalTitleLabel.numberOfLines = 0
+        modalTitleLabel.textAlignment = .Center
+        modalTitleLabel.font = UIFont(name: self.titleFont, size: 24)
+        modalTitleLabel.text = title
+        self.containerView.addSubview(modalTitleLabel)
+        
+        // View text
+        if let text = text? {
+            self.modalTextView = UITextView()
+            modalTextView.editable = false
+            modalTextView.textColor = textColor
+            modalTextView.textAlignment = .Center
+            modalTextView.font = UIFont(name: self.textFont, size: 16)
+            modalTextView.backgroundColor = UIColor.clearColor()
+            modalTextView.text = text
+            self.containerView.addSubview(modalTextView)
+        }
         
         // Button
         self.modalButton = UIButton()
@@ -245,34 +260,6 @@ class JSSAlertView: UIViewController {
             buttonLabel.text = "OK"
         }
         modalButton.addSubview(buttonLabel)
-        
-        
-        // Title
-        self.modalTitleLabel = UILabel()
-        modalTitleLabel.textColor = textColor
-        modalTitleLabel.numberOfLines = 0
-        modalTitleLabel.textAlignment = .Center
-        modalTitleLabel.font = UIFont(name: self.titleFont, size: 24)
-        modalTitleLabel.text = title
-        self.containerView.addSubview(modalTitleLabel)
-        
-        // View text
-        if let text = modalText? {
-            self.modalTextView = UITextView()
-            modalTextView.editable = false
-            modalTextView.textColor = textColor
-            modalTextView.textAlignment = .Center
-            modalTextView.font = UIFont(name: self.textFont, size: 16)
-            modalTextView.backgroundColor = UIColor.clearColor()
-            modalTextView.text = text
-            self.containerView.addSubview(modalTextView)
-        }
-        
-        // Icon
-        if self.iconImage != nil {
-            self.iconImageView = UIImageView(image: self.iconImage)
-            self.containerView.addSubview(iconImageView)
-        }
         
         // Animate it in
         self.view.alpha = 0
