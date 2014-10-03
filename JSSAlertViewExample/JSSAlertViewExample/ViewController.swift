@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func infoAlertButtonPress() {
-        JSSAlertView().info(self, title: "Heads up!", text: "This is the built-in .info style")
+        JSSAlertView().info(self, title: "Heads up!", text: "This is the built-in .info style", buttonText: "Aight then")
     }
     
     @IBAction func successAlertButtonPress() {
@@ -63,9 +63,9 @@ class ViewController: UIViewController {
     @IBAction func kitchenSinkAlertViewButtonPress() {
         var customIcon = UIImage(named: "lightbulb")
         var alertview = JSSAlertView().show(self, title: "Kitchen sink", text: "Here's a modal alert with descriptive text, an icon, custom fonts and a custom color", buttonText: "Sweet", color: UIColorFromHex(0xE0107A, alpha: 1), iconImage: customIcon)
-        alertview.setTitleFont("ClearSans-Light")
+        alertview.setTitleFont("ClearSans-Bold")
         alertview.setTextFont("ClearSans")
-        alertview.setButtonFont("ClearSans-Bold")
+        alertview.setButtonFont("ClearSans-Light")
     }
 }
 
