@@ -15,12 +15,11 @@ import UIKit
 class JSSAlertView: UIViewController {
     
     var containerView:UIView!
-    var modalBackgroundView:UIView!
-    var modalButton:UIButton!
+    var alertBackgroundView:UIView!
+    var dismissButton:UIButton!
     var buttonLabel:UILabel!
-    var modalTitleLabel:UILabel!
-    var modalTextView:UITextView!
-    var modalIconView:UIView!
+    var titleLabel:UILabel!
+    var textView:UITextView!
     var rootViewController:UIViewController!
     var iconImage:UIImage!
     var iconImageView:UIImageView!
@@ -35,17 +34,16 @@ class JSSAlertView: UIViewController {
     
     var defaultColor = UIColorFromHex(0x34495e, alpha: 1)
     
-    enum TextColor {
+    enum TextColorTheme {
         case Dark, Light
     }
     var darkTextColor = UIColorFromHex(0x000000, alpha: 0.75)
     var lightTextColor = UIColorFromHex(0xffffff, alpha: 0.9)
     
     let baseHeight:CGFloat = 160.0
-    var modalWidth:CGFloat = 290.0
-    var modalHeight:CGFloat = 160.0
+    var alertWidth:CGFloat = 290.0
     let buttonHeight:CGFloat = 70.0
-    let modalPadding:CGFloat = 20.0
+    let padding:CGFloat = 20.0
     
     var viewWidth:CGFloat?
     var viewHeight:CGFloat?
@@ -74,6 +72,10 @@ class JSSAlertView: UIViewController {
             self.alertview.setFont(fontStr, type: .Button)
         }
         
+        func setTextTheme(scheme: TextColorTheme) {
+            self.alertview.setTextTheme(scheme)
+        }
+        
         func close() {
             self.alertview.closeView()
         }
@@ -83,11 +85,11 @@ class JSSAlertView: UIViewController {
         switch type {
             case .Title:
                 self.titleFont = fontStr
-                self.modalTitleLabel.font = UIFont(name: self.titleFont, size: 24)
+                self.titleLabel.font = UIFont(name: self.titleFont, size: 24)
             case .Text:
-                if self.modalTextView != nil {
+                if self.textView != nil {
                     self.textFont = fontStr
-                    self.modalTextView.font = UIFont(name: self.textFont, size: 16)
+                    self.textView.font = UIFont(name: self.textFont, size: 16)
                 }
             case .Button:
                 self.buttonFont = fontStr
@@ -95,6 +97,23 @@ class JSSAlertView: UIViewController {
         }
         // relayout to account for size changes
         self.viewDidLayoutSubviews()
+    }
+    
+    func setTextTheme(theme: TextColorTheme) {
+        switch theme {
+            case .Light:
+                recolorText(lightTextColor)
+            case .Dark:
+                recolorText(darkTextColor)
+        }
+    }
+    
+    func recolorText(color: UIColor) {
+        titleLabel.textColor = color
+        if textView != nil {
+            textView.textColor = color
+        }
+        buttonLabel.textColor = color
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -121,67 +140,69 @@ class JSSAlertView: UIViewController {
         self.viewHeight = size.height
         
         var yPos:CGFloat = 0.0
-        var contentWidth:CGFloat = self.modalWidth - (self.modalPadding*2)
+        var contentWidth:CGFloat = self.alertWidth - (self.padding*2)
         
         // position the icon image view, if there is one
         if self.iconImageView != nil {
             yPos += iconImageView.frame.height
-            var centerX = (self.modalWidth-self.iconImageView.frame.width)/2
-            self.iconImageView.frame.origin = CGPoint(x: centerX, y: self.modalPadding)
-            yPos += modalPadding
+            var centerX = (self.alertWidth-self.iconImageView.frame.width)/2
+            self.iconImageView.frame.origin = CGPoint(x: centerX, y: self.padding)
+            yPos += padding
         }
         
         // position the title
-        let titleString = modalTitleLabel.text! as NSString
-        let titleAttr = [NSFontAttributeName:modalTitleLabel.font]
+        let titleString = titleLabel.text! as NSString
+        let titleAttr = [NSFontAttributeName:titleLabel.font]
         let titleSize = CGSize(width: contentWidth, height: 90)
         let titleRect = titleString.boundingRectWithSize(titleSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: titleAttr, context: nil)
-        yPos += modalPadding
-        self.modalTitleLabel.frame = CGRect(x: self.modalPadding, y: yPos, width: self.modalWidth - (self.modalPadding*2), height: ceil(titleRect.size.height))
+        yPos += padding
+        self.titleLabel.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(titleRect.size.height))
         yPos += ceil(titleRect.size.height)
         
         
         // position text
-        if self.modalTextView != nil {
-            let textString = modalTextView.text! as NSString
-            let textAttr = [NSFontAttributeName:modalTextView.font]
+        if self.textView != nil {
+            let textString = textView.text! as NSString
+            let textAttr = [NSFontAttributeName:textView.font]
             let textSize = CGSize(width: contentWidth, height: 90)
             let textRect = textString.boundingRectWithSize(textSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: textAttr, context: nil)
-            self.modalTextView.frame = CGRect(x: self.modalPadding, y: yPos, width: self.modalWidth - (self.modalPadding*2), height: ceil(textRect.size.height)*2)
-            yPos += ceil(textRect.size.height) + modalPadding/2
+            self.textView.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(textRect.size.height)*2)
+            yPos += ceil(textRect.size.height) + padding/2
         }
         
         // position the button
-        yPos += self.modalPadding
-        self.modalButton.frame = CGRect(x: 0, y: yPos, width: self.modalWidth, height: self.buttonHeight)
+        yPos += self.padding
+        self.dismissButton.frame = CGRect(x: 0, y: yPos, width: self.alertWidth, height: self.buttonHeight)
         if self.buttonLabel != nil {
-            self.buttonLabel.frame = CGRect(x: self.modalPadding, y: (self.buttonHeight/2) - 15, width: self.modalWidth - (self.modalPadding*2), height: 30)
+            self.buttonLabel.frame = CGRect(x: self.padding, y: (self.buttonHeight/2) - 15, width: self.alertWidth - (self.padding*2), height: 30)
         }
         yPos += self.buttonHeight
         
         // size the background view
-        self.modalBackgroundView.frame = CGRect(x: 0, y: 0, width: self.modalWidth, height: yPos)
+        self.alertBackgroundView.frame = CGRect(x: 0, y: 0, width: self.alertWidth, height: yPos)
         
         // size the container that holds everything together
-        self.containerView.frame = CGRect(x: (self.viewWidth!-self.modalWidth)/2, y: (self.viewHeight! - yPos)/2, width: self.modalWidth, height: yPos)
+        self.containerView.frame = CGRect(x: (self.viewWidth!-self.alertWidth)/2, y: (self.viewHeight! - yPos)/2, width: self.alertWidth, height: yPos)
     }
     
     
     
-    func info(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0x3498db, alpha: 1))
+    func info(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0x3498db, alpha: 1))
     }
     
-    func success(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0x2ecc71, alpha: 1))
+    func success(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0x2ecc71, alpha: 1))
     }
     
-    func warning(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0xf1c40f, alpha: 1))
+    func warning(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
+        var alertview = self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0xf1c40f, alpha: 1))
+        alertview.setTextTheme(.Dark)
+        return alertview
     }
     
-    func danger(viewController: UIViewController, title: String, text: String?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, text: text, buttonText: nil, color: UIColorFromHex(0xe74c3c, alpha: 1))
+    func danger(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: buttonText, color: UIColorFromHex(0xe74c3c, alpha: 1))
     }
     
     func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
@@ -209,11 +230,11 @@ class JSSAlertView: UIViewController {
         self.view.addSubview(self.containerView!)
         
         // Background view/main color
-        self.modalBackgroundView = UIView()
-        modalBackgroundView.backgroundColor = baseColor
-        modalBackgroundView.layer.cornerRadius = 4
-        modalBackgroundView.layer.masksToBounds = true
-        self.containerView.addSubview(modalBackgroundView!)
+        self.alertBackgroundView = UIView()
+        alertBackgroundView.backgroundColor = baseColor
+        alertBackgroundView.layer.cornerRadius = 4
+        alertBackgroundView.layer.masksToBounds = true
+        self.containerView.addSubview(alertBackgroundView!)
         
         // Icon
         self.iconImage = iconImage
@@ -223,31 +244,31 @@ class JSSAlertView: UIViewController {
         }
         
         // Title
-        self.modalTitleLabel = UILabel()
-        modalTitleLabel.textColor = textColor
-        modalTitleLabel.numberOfLines = 0
-        modalTitleLabel.textAlignment = .Center
-        modalTitleLabel.font = UIFont(name: self.titleFont, size: 24)
-        modalTitleLabel.text = title
-        self.containerView.addSubview(modalTitleLabel)
+        self.titleLabel = UILabel()
+        titleLabel.textColor = textColor
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .Center
+        titleLabel.font = UIFont(name: self.titleFont, size: 24)
+        titleLabel.text = title
+        self.containerView.addSubview(titleLabel)
         
         // View text
         if let text = text? {
-            self.modalTextView = UITextView()
-            modalTextView.editable = false
-            modalTextView.textColor = textColor
-            modalTextView.textAlignment = .Center
-            modalTextView.font = UIFont(name: self.textFont, size: 16)
-            modalTextView.backgroundColor = UIColor.clearColor()
-            modalTextView.text = text
-            self.containerView.addSubview(modalTextView)
+            self.textView = UITextView()
+            textView.editable = false
+            textView.textColor = textColor
+            textView.textAlignment = .Center
+            textView.font = UIFont(name: self.textFont, size: 16)
+            textView.backgroundColor = UIColor.clearColor()
+            textView.text = text
+            self.containerView.addSubview(textView)
         }
         
         // Button
-        self.modalButton = UIButton()
-        modalButton.backgroundColor = adjustBrightness(baseColor!, 0.8)
-        modalButton.addTarget(self, action: "closeView", forControlEvents: .TouchUpInside)
-        modalBackgroundView!.addSubview(modalButton)
+        self.dismissButton = UIButton()
+        dismissButton.backgroundColor = adjustBrightness(baseColor!, 0.8)
+        dismissButton.addTarget(self, action: "closeView", forControlEvents: .TouchUpInside)
+        alertBackgroundView!.addSubview(dismissButton)
         // Button text
         self.buttonLabel = UILabel()
         buttonLabel.textColor = textColor
@@ -259,7 +280,7 @@ class JSSAlertView: UIViewController {
         } else {
             buttonLabel.text = "OK"
         }
-        modalButton.addSubview(buttonLabel)
+        dismissButton.addSubview(buttonLabel)
         
         // Animate it in
         self.view.alpha = 0
