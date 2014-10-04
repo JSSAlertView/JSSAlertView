@@ -65,10 +65,15 @@ class ViewController: UIViewController {
     @IBAction func kitchenSinkAlertViewButtonPress() {
         var customIcon = UIImage(named: "lightbulb")
         var alertview = JSSAlertView().show(self, title: "Kitchen sink", text: "Here's a modal alert with descriptive text, an icon, custom fonts and a custom color", buttonText: "Sweet", color: UIColorFromHex(0xE0107A, alpha: 1), iconImage: customIcon)
+        alertview.addAction(callback)
         alertview.setTitleFont("ClearSans-Bold")
         alertview.setTextFont("ClearSans")
         alertview.setButtonFont("ClearSans-Light")
         alertview.setTextTheme(.Light)
+    }
+    
+    func callback() {
+        println("Callback called")
     }
 }
 
