@@ -85,15 +85,27 @@ class JSSAlertView: UIViewController {
         switch type {
             case .Title:
                 self.titleFont = fontStr
-                self.titleLabel.font = UIFont(name: self.titleFont, size: 24)
+                if let font = UIFont(name: self.titleFont, size: 24) {
+                    self.titleLabel.font = font
+                } else {
+                    self.titleLabel.font = UIFont.systemFontOfSize(24)
+                }
             case .Text:
                 if self.textView != nil {
                     self.textFont = fontStr
-                    self.textView.font = UIFont(name: self.textFont, size: 16)
+                    if let font = UIFont(name: self.textFont, size: 16) {
+                        self.textView.font = font
+                    } else {
+                        self.textView.font = UIFont.systemFontOfSize(16)
+                    }
                 }
             case .Button:
                 self.buttonFont = fontStr
-                self.buttonLabel.font = UIFont(name: self.buttonFont, size: 20)
+                if let font = UIFont(name: self.buttonFont, size: 24) {
+                    self.buttonLabel.font = font
+                } else {
+                    self.buttonLabel.font = UIFont.systemFontOfSize(24)
+            }
         }
         // relayout to account for size changes
         self.viewDidLayoutSubviews()
