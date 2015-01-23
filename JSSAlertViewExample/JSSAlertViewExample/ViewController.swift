@@ -61,6 +61,12 @@ class ViewController: UIViewController {
     @IBAction func dangerAlertButtonPress() {
         JSSAlertView().danger(self, title: "Oh, shit.", text: "This is the built-in .danger style")
     }
+
+    
+    @IBAction func twoButtonAlertPress() {
+        var alertview = JSSAlertView().show(self, title: "Standard alert", text: "A standard alert with some text looks like this", buttonText: "Yep", cancelButtonText: "Nope")
+        alertview.addAction(callback)
+    }
     
     @IBAction func kitchenSinkAlertViewButtonPress() {
         var customIcon = UIImage(named: "lightbulb")
@@ -75,5 +81,6 @@ class ViewController: UIViewController {
     func callback() {
         println("Callback called")
     }
+    
 }
 

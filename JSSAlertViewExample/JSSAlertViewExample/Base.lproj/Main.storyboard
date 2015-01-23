@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -70,15 +71,6 @@
                                     <action selector="dangerAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lfo-HO-RWk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d5-SM-E9D">
-                                <rect key="frame" x="220" y="400" width="159" height="30"/>
-                                <state key="normal" title="Kitchen Sink Alert View">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="kitchenSinkAlertViewButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="M1k-jt-vIQ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY0-MD-Q3j">
                                 <rect key="frame" x="250" y="240" width="99" height="30"/>
                                 <state key="normal" title="Info Alert View">
@@ -106,6 +98,24 @@
                                     <action selector="customFontsAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gos-md-6Vi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-EJ-kmO">
+                                <rect key="frame" x="220" y="440" width="159" height="30"/>
+                                <state key="normal" title="Kitchen Sink Alert View">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="kitchenSinkAlertViewButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6Tp-E8-4oI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d5-SM-E9D">
+                                <rect key="frame" x="224" y="400" width="152" height="30"/>
+                                <state key="normal" title="Two-Button Alert View">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="twoButtonAlertPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="X5S-0U-I4g"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -123,11 +133,13 @@
                             <constraint firstItem="rgV-Ya-MB6" firstAttribute="top" secondItem="Xth-ZC-yov" secondAttribute="bottom" constant="10" id="a5A-bq-xy0"/>
                             <constraint firstItem="0d5-SM-E9D" firstAttribute="top" secondItem="yEd-G8-ELM" secondAttribute="bottom" constant="10" id="dAY-cV-uId"/>
                             <constraint firstAttribute="centerX" secondItem="0d5-SM-E9D" secondAttribute="centerX" id="hyA-qJ-HVg"/>
+                            <constraint firstAttribute="centerX" secondItem="2Yd-EJ-kmO" secondAttribute="centerX" constant="0.5" id="l9N-hG-Tkp"/>
                             <constraint firstAttribute="centerX" secondItem="Xth-ZC-yov" secondAttribute="centerX" id="llH-km-Kbu"/>
                             <constraint firstItem="ajf-Do-GSb" firstAttribute="top" secondItem="rgV-Ya-MB6" secondAttribute="bottom" constant="10" id="mPi-UR-h6Q"/>
                             <constraint firstAttribute="centerX" secondItem="ajf-Do-GSb" secondAttribute="centerX" id="nHI-36-o7h"/>
                             <constraint firstAttribute="centerX" secondItem="xY0-MD-Q3j" secondAttribute="centerX" id="nOv-8Q-yF4"/>
                             <constraint firstAttribute="centerX" secondItem="yky-ab-Rlm" secondAttribute="centerX" constant="1" id="sT8-31-TOc"/>
+                            <constraint firstItem="2Yd-EJ-kmO" firstAttribute="top" secondItem="0d5-SM-E9D" secondAttribute="bottom" constant="10" id="w1T-ix-kWW"/>
                             <constraint firstAttribute="centerX" secondItem="RDY-BC-Oow" secondAttribute="centerX" id="ydI-A3-RRn"/>
                         </constraints>
                     </view>
