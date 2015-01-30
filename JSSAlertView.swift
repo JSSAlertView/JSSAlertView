@@ -294,6 +294,7 @@ class JSSAlertView: UIViewController {
         // View text
         if let text = text? {
             self.textView = UITextView()
+            self.textView.userInteractionEnabled = false
             textView.editable = false
             textView.textColor = textColor
             textView.textAlignment = .Center
