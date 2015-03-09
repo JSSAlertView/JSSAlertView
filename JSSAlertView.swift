@@ -247,7 +247,7 @@ class JSSAlertView: UIViewController {
     
     func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
         
-        self.rootViewController = viewController
+        self.rootViewController = viewController.view.window!.rootViewController
         self.rootViewController.addChildViewController(self)
         self.rootViewController.view.addSubview(view)
         
