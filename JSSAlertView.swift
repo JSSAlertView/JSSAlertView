@@ -26,6 +26,7 @@ class JSSAlertView: UIViewController {
     var iconImage:UIImage!
     var iconImageView:UIImageView!
     var closeAction:(()->Void)!
+    var cancelAction:(()->Void)!
     var isAlertOpen:Bool = false
     
     enum FontType {
@@ -63,6 +64,10 @@ class JSSAlertView: UIViewController {
             self.alertview.addAction(action)
         }
         
+        func addCancelAction(action: ()->Void) {
+            self.alertview.addCancelAction(action)
+        }
+
         func setTitleFont(fontStr: String) {
             self.alertview.setFont(fontStr, type: .Title)
         }
@@ -372,6 +377,10 @@ class JSSAlertView: UIViewController {
         closeView(true);
     }
     
+    func addCancelAction(action: ()->Void) {
+        self.cancelAction = action
+    }
+
     func cancelButtonTap() {
         closeView(false);
     }
@@ -397,6 +406,9 @@ class JSSAlertView: UIViewController {
     func removeView() {
         isAlertOpen = false
         self.view.removeFromSuperview()
+        if let action = self.cancelAction? {
+            action()
+        }
     }
     
 }
