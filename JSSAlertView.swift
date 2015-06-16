@@ -79,7 +79,7 @@ class JSSAlertView: UIViewController {
             self.alertview.setTextTheme(theme)
         }
         
-        func close() {
+        @objc func close() {
             self.alertview.closeView(false)
         }
     }
