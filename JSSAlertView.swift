@@ -393,25 +393,23 @@ class JSSAlertView: UIViewController {
                 UIView.animateWithDuration(0.1, animations: {
                     self.view.alpha = 0
                     }, completion: { finished in
-                        if withCallback == true {
+                        if withCallback {
                             if let action = self.closeAction where source == .Close {
                                 action()
                             }
+                            else if let action = self.cancelAction where source == .Cancel {
+                                action()
+                            }
                         }
-                        self.removeView(withCallback, source: source)
+                        self.removeView()
                 })
                 
         })
     }
     
-    func removeView(withCallback:Bool, source:ActionType = .Cancel) {
+    func removeView() {
         isAlertOpen = false
         self.view.removeFromSuperview()
-        if withCallback {
-            if let action = self.cancelAction where source == .Cancel {
-                action()
-            }
-        }
     }
     
 }
