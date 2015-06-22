@@ -58,16 +58,20 @@ alertview.setButtonFont("ClearSans-Light") // Button text font
 alertview.setTextTheme(.Light) // can be .Light or .Dark
 ```
 
-Finally, two-button alerts with a cancel button on the left are possible by passing in some `cancelButtonText`. The button on the left side of the alert will reflect that text and simply dismiss the alert when tapped. The right-hand button will trigger any callbacks specified as well as dismissing the alert.
+Finally, two-button alerts with a cancel button on the left are possible by passing in some `cancelButtonText`. The button on the left side of the alert will reflect that text and simply dismiss the alert when tapped, with an optional cancel callback. The right-hand button will also dismiss the alert as usual, with the appropriate close callback if present.
 
 ```swift
-JSSAlertView().show(
+func myCancelCallback() {
+  // this'll run if cancel is pressed after the alert is dismissed
+}
+var alertview = JSSAlertView().show(
   self, 
   title: "I'm an alert",
   text: "An alert with two buttons. Dismiss by tapping the left, and do something else by tapping the right.", 
-  buttonText: "Trigger callback",
-  cancelButtonText: "Just dismiss alert" // This tells JSSAlertView to create a two-button alert
+  buttonText: "OK",
+  cancelButtonText: "Cancel" // This tells JSSAlertView to create a two-button alert
 )
+alertview.addCancelAction(myCancelCallback)
 ```
 
 See the included example project for more!
