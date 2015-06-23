@@ -44,6 +44,10 @@ class JSSAlertView: UIViewController {
     var darkTextColor = UIColorFromHex(0x000000, alpha: 0.75)
     var lightTextColor = UIColorFromHex(0xffffff, alpha: 0.9)
     
+    enum ActionType {
+        case Close, Cancel
+    }
+    
     let baseHeight:CGFloat = 160.0
     var alertWidth:CGFloat = 290.0
     let buttonHeight:CGFloat = 70.0
@@ -371,7 +375,7 @@ class JSSAlertView: UIViewController {
     }
     
     func buttonTap() {
-        closeView(true);
+        closeView(true, source: .Close);
     }
     
     func addCancelAction(action: ()->Void) {
@@ -379,18 +383,21 @@ class JSSAlertView: UIViewController {
     }
 
     func cancelButtonTap() {
-        closeView(false);
+        closeView(true, source: .Cancel);
     }
     
-    func closeView(withCallback:Bool) {
+    func closeView(withCallback:Bool, source:ActionType = .Close) {
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: {
             self.containerView.center.y = self.rootViewController.view.center.y + self.viewHeight!
             }, completion: { finished in
                 UIView.animateWithDuration(0.1, animations: {
                     self.view.alpha = 0
                     }, completion: { finished in
-                        if withCallback == true {
-                            if let action = self.closeAction {
+                        if withCallback {
+                            if let action = self.closeAction where source == .Close {
+                                action()
+                            }
+                            else if let action = self.cancelAction where source == .Cancel {
                                 action()
                             }
                         }
@@ -403,9 +410,6 @@ class JSSAlertView: UIViewController {
     func removeView() {
         isAlertOpen = false
         self.view.removeFromSuperview()
-        if let action = self.cancelAction? {
-            action()
-        }
     }
     
 }
