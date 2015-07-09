@@ -22,7 +22,7 @@ class JSSAlertView: UIViewController {
     var cancelButtonLabel:UILabel!
     var titleLabel:UILabel!
     var textView:UITextView!
-    var rootViewController:UIViewController!
+    weak var rootViewController:UIViewController!
     var iconImage:UIImage!
     var iconImageView:UIImageView!
     var closeAction:(()->Void)!
