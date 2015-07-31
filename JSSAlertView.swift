@@ -158,7 +158,7 @@ class JSSAlertView: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        let size = UIScreen.mainScreen().bounds.size
+        let size = self.screenSize()
         self.viewWidth = size.width
         self.viewHeight = size.height
         
@@ -267,9 +267,11 @@ class JSSAlertView: UIViewController {
         }
         var textColor = self.darkTextColor
         
-        let sz = UIScreen.mainScreen().bounds.size
+        let sz = self.screenSize()
         self.viewWidth = sz.width
         self.viewHeight = sz.height
+        
+        self.view.frame.size = sz
         
         // Container for the entire alert modal contents
         self.containerView = UIView()
@@ -358,10 +360,10 @@ class JSSAlertView: UIViewController {
         UIView.animateWithDuration(0.2, animations: {
             self.view.alpha = 1
         })
-        self.containerView.frame.origin.x = self.rootViewController.view.center.x
+        self.containerView.frame.origin.x = self.view.center.x
         self.containerView.center.y = -500
         UIView.animateWithDuration(0.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: nil, animations: {
-            self.containerView.center = self.rootViewController.view.center
+            self.containerView.center = self.view.center
             }, completion: { finished in
                 
         })
@@ -388,7 +390,7 @@ class JSSAlertView: UIViewController {
     
     func closeView(withCallback:Bool, source:ActionType = .Close) {
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: nil, animations: {
-            self.containerView.center.y = self.rootViewController.view.center.y + self.viewHeight!
+            self.containerView.center.y = self.view.center.y + self.viewHeight!
             }, completion: { finished in
                 UIView.animateWithDuration(0.1, animations: {
                     self.view.alpha = 0
@@ -410,6 +412,15 @@ class JSSAlertView: UIViewController {
     func removeView() {
         isAlertOpen = false
         self.view.removeFromSuperview()
+    }
+    
+    
+    func screenSize() -> CGSize {
+        let screenSize = UIScreen.mainScreen().bounds.size
+        if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
+            return CGSizeMake(screenSize.height, screenSize.width)
+        }
+        return screenSize
     }
     
 }
