@@ -411,6 +411,7 @@ class JSSAlertView: UIViewController {
     
     func removeView() {
         isAlertOpen = false
+        self.removeFromParentViewController()
         self.view.removeFromSuperview()
     }
     
