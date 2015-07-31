@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
@@ -55,30 +54,45 @@
                                 <state key="normal" title="Custom Icon Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="customIconAlertButtonPress" destination="JEX-9P-axG" eventType="touchUpInside" id="2M4-MV-MKT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bri-HQ-t4t">
                                 <rect key="frame" x="234" y="329" width="131" height="30"/>
                                 <state key="normal" title="Success Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="successAlertButtonPress" destination="JEX-9P-axG" eventType="touchUpInside" id="s8s-6I-Nyb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmf-DW-Eqr">
                                 <rect key="frame" x="236" y="369" width="129" height="30"/>
                                 <state key="normal" title="Warning Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="warningAlertButtonPress" destination="JEX-9P-axG" eventType="touchUpInside" id="GB0-e7-DbV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQc-gb-COP">
                                 <rect key="frame" x="239" y="409" width="122" height="30"/>
                                 <state key="normal" title="Danger Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dangerAlertButtonPress" destination="JEX-9P-axG" eventType="touchUpInside" id="3sc-ds-svg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypX-EC-RYs">
                                 <rect key="frame" x="250" y="289" width="99" height="30"/>
                                 <state key="normal" title="Info Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="infoAlertButtonPress" destination="JEX-9P-axG" eventType="touchUpInside" id="8Vw-JL-di0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbp-a8-ahb">
                                 <rect key="frame" x="232" y="129" width="136" height="30"/>
@@ -94,18 +108,27 @@
                                 <state key="normal" title="Custom Fonts Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="customFontsAlertButtonPress" destination="JEX-9P-axG" eventType="touchUpInside" id="55h-hH-fFP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="153-SI-OEH">
                                 <rect key="frame" x="220" y="489" width="159" height="30"/>
                                 <state key="normal" title="Kitchen Sink Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="kitchenSinkAlertViewButtonPress" destination="JEX-9P-axG" eventType="touchUpInside" id="w0f-KU-0G6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnM-PQ-u3c">
                                 <rect key="frame" x="224" y="449" width="152" height="30"/>
                                 <state key="normal" title="Two-Button Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="twoButtonAlertPress" destination="JEX-9P-axG" eventType="touchUpInside" id="A8u-PP-rpe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
