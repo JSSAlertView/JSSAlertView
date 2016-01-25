@@ -29,18 +29,18 @@ class ViewController: UIViewController {
     }
 
     @IBAction func customColorAlertButtonPress() {
-        var alertview = JSSAlertView().show(self, title: "Custom color", text: "All of the cool kids have purple alerts these days", buttonText: "Whoa", color: UIColorFromHex(0x9b59b6, alpha: 1))
+        let alertview = JSSAlertView().show(self, title: "Custom color", text: "All of the cool kids have purple alerts these days", buttonText: "Whoa", color: UIColorFromHex(0x9b59b6, alpha: 1))
         alertview.setTextTheme(.Light)
     }
     
     @IBAction func customIconAlertButtonPress() {
-        var customIcon = UIImage(named: "lightbulb")
-        var alertview = JSSAlertView().show(self, title: "Custom icon", text: "Supply a UIImage as the iconImage for sexy results", buttonText: "Yes", color: UIColorFromHex(0x9b59b6, alpha: 1), iconImage: customIcon)
+        let customIcon = UIImage(named: "lightbulb")
+        let alertview = JSSAlertView().show(self, title: "Custom icon", text: "Supply a UIImage as the iconImage for sexy results", buttonText: "Yes", color: UIColorFromHex(0x9b59b6, alpha: 1), iconImage: customIcon)
         alertview.setTextTheme(.Light)
     }
 
     @IBAction func customFontsAlertButtonPress() {
-        var alertview = JSSAlertView().show(self, title: "Check it out", text: "This alert is using a custom font: Clear Sans to be specific")
+        let alertview = JSSAlertView().show(self, title: "Check it out", text: "This alert is using a custom font: Clear Sans to be specific")
         alertview.setTitleFont("ClearSans-Light")
         alertview.setTextFont("ClearSans")
         alertview.setButtonFont("ClearSans-Bold")
@@ -64,14 +64,14 @@ class ViewController: UIViewController {
 
     
     @IBAction func twoButtonAlertPress() {
-        var alertview = JSSAlertView().show(self, title: "Standard alert", text: "A standard alert with some text looks like this", buttonText: "Yep", cancelButtonText: "Nope")
+        let alertview = JSSAlertView().show(self, title: "Standard alert", text: "A standard alert with some text looks like this", buttonText: "Yep", cancelButtonText: "Nope")
         alertview.addAction(closeCallback)
         alertview.addCancelAction(cancelCallback)
     }
     
     @IBAction func kitchenSinkAlertViewButtonPress() {
-        var customIcon = UIImage(named: "lightbulb")
-        var alertview = JSSAlertView().show(self, title: "Kitchen sink", text: "Here's a modal alert with descriptive text, an icon, custom fonts and a custom color", buttonText: "Sweet", color: UIColorFromHex(0xE0107A, alpha: 1), iconImage: customIcon)
+        let customIcon = UIImage(named: "lightbulb")
+        let alertview = JSSAlertView().show(self, title: "Kitchen sink", text: "Here's a modal alert with descriptive text, an icon, custom fonts and a custom color", buttonText: "Sweet", color: UIColorFromHex(0xE0107A, alpha: 1), iconImage: customIcon)
         alertview.addAction(closeCallback)
         alertview.setTitleFont("ClearSans-Bold")
         alertview.setTextFont("ClearSans")
@@ -80,11 +80,11 @@ class ViewController: UIViewController {
     }
     
     func closeCallback() {
-        println("Close callback called")
+        print("Close callback called")
     }
     
     func cancelCallback() {
-        println("Cancel callback called")
+        print("Cancel callback called")
     }
     
 }
