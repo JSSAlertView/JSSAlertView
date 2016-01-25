@@ -254,6 +254,10 @@ class JSSAlertView: UIViewController {
     func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
         
         self.rootViewController = viewController.view.window!.rootViewController
+        if rootViewController.isKindOfClass(UITableViewController){
+            let tableViewController = rootViewController as! UITableViewController
+            tableViewController.tableView.scrollEnabled = false
+        }
         self.rootViewController.addChildViewController(self)
         self.rootViewController.view.addSubview(view)
         
@@ -402,6 +406,10 @@ class JSSAlertView: UIViewController {
                             else if let action = self.cancelAction where source == .Cancel {
                                 action()
                             }
+                        }
+                        if self.rootViewController.isKindOfClass(UITableViewController){
+                            let tableViewController = self.rootViewController as! UITableViewController
+                            tableViewController.tableView.scrollEnabled = true
                         }
                         self.removeView()
                 })
