@@ -254,6 +254,11 @@ class JSSAlertView: UIViewController {
     func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
         
         self.rootViewController = viewController.view.window!.rootViewController
+        
+        if((viewController.navigationController) != nil) {
+            self.rootViewController = viewController.navigationController
+        }
+        
         if rootViewController.isKindOfClass(UITableViewController){
             let tableViewController = rootViewController as! UITableViewController
             tableViewController.tableView.scrollEnabled = false
@@ -368,6 +373,8 @@ class JSSAlertView: UIViewController {
         self.containerView.center.y = -500
         UIView.animateWithDuration(0.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [], animations: {
             self.containerView.center = self.view.center
+            self.containerView.center = CGPoint(x: UIScreen.mainScreen().bounds.size.width / 2 , y: UIScreen.mainScreen().bounds.size.width / 2)
+
             }, completion: { finished in
                 
         })

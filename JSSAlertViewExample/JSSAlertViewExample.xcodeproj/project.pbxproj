@@ -17,6 +17,7 @@
 		0DB0983819DEB5B8001C7385 /* ClearSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DB0983519DEB5B8001C7385 /* ClearSans-Bold.ttf */; };
 		0DB0983919DEB5B8001C7385 /* ClearSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DB0983619DEB5B8001C7385 /* ClearSans-Regular.ttf */; };
 		0DB0983C19DEB633001C7385 /* ClearSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DB0983B19DEB633001C7385 /* ClearSans-Light.ttf */; };
+		35976AFF1C56D2E100FF96E4 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35976AFE1C56D2E100FF96E4 /* DummyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		0DB0983519DEB5B8001C7385 /* ClearSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClearSans-Bold.ttf"; sourceTree = "<group>"; };
 		0DB0983619DEB5B8001C7385 /* ClearSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClearSans-Regular.ttf"; sourceTree = "<group>"; };
 		0DB0983B19DEB633001C7385 /* ClearSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClearSans-Light.ttf"; sourceTree = "<group>"; };
+		35976AFE1C56D2E100FF96E4 /* DummyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				0D381A5E19D9C12C004708F6 /* JSSAlertView */,
 				0D15C3C019D10AE900A03F3E /* AppDelegate.swift */,
+				35976AFE1C56D2E100FF96E4 /* DummyViewController.swift */,
 				0D15C3C219D10AE900A03F3E /* ViewController.swift */,
 				0D15C3C419D10AE900A03F3E /* Main.storyboard */,
 				0D15C3C719D10AE900A03F3E /* Images.xcassets */,
@@ -256,6 +259,7 @@
 				0D381A5D19D9C127004708F6 /* JSSAlertView.swift in Sources */,
 				0D15C3C319D10AE900A03F3E /* ViewController.swift in Sources */,
 				0D15C3C119D10AE900A03F3E /* AppDelegate.swift in Sources */,
+				35976AFF1C56D2E100FF96E4 /* DummyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
