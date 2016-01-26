@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,6 +19,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xth-ZC-yov">
                                 <rect key="frame" x="197" y="40" width="206" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Really, Really Basic Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -28,6 +29,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajf-Do-GSb">
                                 <rect key="frame" x="216" y="120" width="168" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Custom Color Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -37,6 +39,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Oy-nU-S6A">
                                 <rect key="frame" x="220" y="160" width="160" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Custom Icon Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -46,6 +49,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZ2-66-VsE">
                                 <rect key="frame" x="234" y="280" width="131" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Success Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -55,6 +59,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDY-BC-Oow">
                                 <rect key="frame" x="236" y="320" width="129" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Warning Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -64,6 +69,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEd-G8-ELM">
                                 <rect key="frame" x="239" y="360" width="122" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Danger Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -73,6 +79,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY0-MD-Q3j">
                                 <rect key="frame" x="250" y="240" width="99" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Info Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -82,6 +89,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgV-Ya-MB6">
                                 <rect key="frame" x="231" y="80" width="136" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Standard Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -91,6 +99,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yky-ab-Rlm">
                                 <rect key="frame" x="214" y="200" width="170" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Custom Fonts Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -98,17 +107,9 @@
                                     <action selector="customFontsAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gos-md-6Vi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-EJ-kmO">
-                                <rect key="frame" x="220" y="440" width="159" height="30"/>
-                                <state key="normal" title="Kitchen Sink Alert View">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="kitchenSinkAlertViewButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6Tp-E8-4oI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d5-SM-E9D">
                                 <rect key="frame" x="224" y="400" width="152" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Two-Button Alert View">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -116,8 +117,9 @@
                                     <action selector="twoButtonAlertPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="X5S-0U-I4g"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H1-fs-qhK">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H1-fs-qhK">
                                 <rect key="frame" x="221" y="478" width="159" height="30"/>
+                                <animations/>
                                 <state key="normal" title="View with navigation controller">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -125,7 +127,18 @@
                                     <action selector="fireUpNavigationController" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BTH-52-Shh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-EJ-kmO">
+                                <rect key="frame" x="220" y="440" width="159" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Kitchen Sink Alert View">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="kitchenSinkAlertViewButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6Tp-E8-4oI"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="rgV-Ya-MB6" secondAttribute="centerX" constant="1" id="0Uo-sy-Sl3"/>
@@ -137,7 +150,9 @@
                             <constraint firstItem="xY0-MD-Q3j" firstAttribute="top" secondItem="yky-ab-Rlm" secondAttribute="bottom" constant="10" id="J6l-HV-VQE"/>
                             <constraint firstItem="WZ2-66-VsE" firstAttribute="top" secondItem="xY0-MD-Q3j" secondAttribute="bottom" constant="10" id="Lbj-dW-KfW"/>
                             <constraint firstItem="yky-ab-Rlm" firstAttribute="top" secondItem="3Oy-nU-S6A" secondAttribute="bottom" constant="10" id="Qbc-nH-nsP"/>
+                            <constraint firstItem="2H1-fs-qhK" firstAttribute="centerX" secondItem="2Yd-EJ-kmO" secondAttribute="centerX" id="U2P-h4-TkJ"/>
                             <constraint firstAttribute="centerX" secondItem="3Oy-nU-S6A" secondAttribute="centerX" id="VH2-Pu-TaC"/>
+                            <constraint firstItem="2H1-fs-qhK" firstAttribute="top" secondItem="2Yd-EJ-kmO" secondAttribute="bottom" constant="8" id="VTk-wU-Smf"/>
                             <constraint firstItem="yEd-G8-ELM" firstAttribute="top" secondItem="RDY-BC-Oow" secondAttribute="bottom" constant="10" id="Z8G-cG-U0G"/>
                             <constraint firstItem="rgV-Ya-MB6" firstAttribute="top" secondItem="Xth-ZC-yov" secondAttribute="bottom" constant="10" id="a5A-bq-xy0"/>
                             <constraint firstItem="0d5-SM-E9D" firstAttribute="top" secondItem="yEd-G8-ELM" secondAttribute="bottom" constant="10" id="dAY-cV-uId"/>
