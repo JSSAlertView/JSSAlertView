@@ -342,7 +342,7 @@ class JSSAlertView: UIViewController {
         dismissButton.addSubview(buttonLabel)
         
         // Second cancel button
-        if let btnText = cancelButtonText {
+        if cancelButtonText != nil {
             self.cancelButton = UIButton()
             let buttonColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.8))
             let buttonHighlightColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.9))
@@ -356,9 +356,7 @@ class JSSAlertView: UIViewController {
             cancelButtonLabel.textColor = textColor
             cancelButtonLabel.numberOfLines = 1
             cancelButtonLabel.textAlignment = .Center
-            if let text = cancelButtonText {
-                cancelButtonLabel.text = text
-            }
+            cancelButtonLabel.text = cancelButtonText		
             
             cancelButton.addSubview(cancelButtonLabel)
         }
