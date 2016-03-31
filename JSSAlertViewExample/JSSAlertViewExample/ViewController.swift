@@ -79,6 +79,11 @@ class ViewController: UIViewController {
         alertview.setTextTheme(.Light)
     }
     
+    @IBAction func fireUpNavigationController() {
+        let nav = UINavigationController(rootViewController: DummyViewController())
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+
     func closeCallback() {
         print("Close callback called")
     }

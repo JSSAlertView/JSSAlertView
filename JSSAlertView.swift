@@ -143,12 +143,12 @@ class JSSAlertView: UIViewController {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("NSCoding not supported")
-    }
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func didReceiveMemoryWarning() {
@@ -252,8 +252,16 @@ class JSSAlertView: UIViewController {
     }
     
     func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
+        self.rootViewController = viewController.view.window!.rootViewController
         
-        self.rootViewController = viewController
+        if((viewController.navigationController) != nil) {
+            self.rootViewController = viewController.navigationController
+        }
+        
+        if rootViewController.isKindOfClass(UITableViewController){
+            let tableViewController = rootViewController as! UITableViewController
+            tableViewController.tableView.scrollEnabled = false
+        }
         self.rootViewController.addChildViewController(self)
         self.rootViewController.view.addSubview(view)
         
@@ -364,6 +372,8 @@ class JSSAlertView: UIViewController {
         self.containerView.center.y = -500
         UIView.animateWithDuration(0.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [], animations: {
             self.containerView.center = self.view.center
+            self.containerView.center = CGPoint(x: UIScreen.mainScreen().bounds.size.width / 2 , y: UIScreen.mainScreen().bounds.size.width / 2)
+
             }, completion: { finished in
                 
         })
@@ -402,6 +412,10 @@ class JSSAlertView: UIViewController {
                             else if let action = self.cancelAction where source == .Cancel {
                                 action()
                             }
+                        }
+                        if self.rootViewController.isKindOfClass(UITableViewController){
+                            let tableViewController = self.rootViewController as! UITableViewController
+                            tableViewController.tableView.scrollEnabled = true
                         }
                         self.removeView()
                 })

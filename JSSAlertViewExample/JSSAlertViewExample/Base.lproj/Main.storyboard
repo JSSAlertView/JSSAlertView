@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -107,16 +107,6 @@
                                     <action selector="customFontsAlertButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gos-md-6Vi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-EJ-kmO">
-                                <rect key="frame" x="220" y="440" width="159" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Kitchen Sink Alert View">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="kitchenSinkAlertViewButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6Tp-E8-4oI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d5-SM-E9D">
                                 <rect key="frame" x="224" y="400" width="152" height="30"/>
                                 <animations/>
@@ -125,6 +115,26 @@
                                 </state>
                                 <connections>
                                     <action selector="twoButtonAlertPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="X5S-0U-I4g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H1-fs-qhK">
+                                <rect key="frame" x="221" y="478" width="159" height="30"/>
+                                <animations/>
+                                <state key="normal" title="View with navigation controller">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fireUpNavigationController" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BTH-52-Shh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Yd-EJ-kmO">
+                                <rect key="frame" x="220" y="440" width="159" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Kitchen Sink Alert View">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="kitchenSinkAlertViewButtonPress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6Tp-E8-4oI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -140,7 +150,9 @@
                             <constraint firstItem="xY0-MD-Q3j" firstAttribute="top" secondItem="yky-ab-Rlm" secondAttribute="bottom" constant="10" id="J6l-HV-VQE"/>
                             <constraint firstItem="WZ2-66-VsE" firstAttribute="top" secondItem="xY0-MD-Q3j" secondAttribute="bottom" constant="10" id="Lbj-dW-KfW"/>
                             <constraint firstItem="yky-ab-Rlm" firstAttribute="top" secondItem="3Oy-nU-S6A" secondAttribute="bottom" constant="10" id="Qbc-nH-nsP"/>
+                            <constraint firstItem="2H1-fs-qhK" firstAttribute="centerX" secondItem="2Yd-EJ-kmO" secondAttribute="centerX" id="U2P-h4-TkJ"/>
                             <constraint firstAttribute="centerX" secondItem="3Oy-nU-S6A" secondAttribute="centerX" id="VH2-Pu-TaC"/>
+                            <constraint firstItem="2H1-fs-qhK" firstAttribute="top" secondItem="2Yd-EJ-kmO" secondAttribute="bottom" constant="8" id="VTk-wU-Smf"/>
                             <constraint firstItem="yEd-G8-ELM" firstAttribute="top" secondItem="RDY-BC-Oow" secondAttribute="bottom" constant="10" id="Z8G-cG-U0G"/>
                             <constraint firstItem="rgV-Ya-MB6" firstAttribute="top" secondItem="Xth-ZC-yov" secondAttribute="bottom" constant="10" id="a5A-bq-xy0"/>
                             <constraint firstItem="0d5-SM-E9D" firstAttribute="top" secondItem="yEd-G8-ELM" secondAttribute="bottom" constant="10" id="dAY-cV-uId"/>
