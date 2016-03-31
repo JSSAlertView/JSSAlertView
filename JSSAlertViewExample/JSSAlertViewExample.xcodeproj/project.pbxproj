@@ -11,7 +11,6 @@
 		0D15C3C319D10AE900A03F3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D15C3C219D10AE900A03F3E /* ViewController.swift */; };
 		0D15C3C619D10AE900A03F3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D15C3C419D10AE900A03F3E /* Main.storyboard */; };
 		0D15C3C819D10AE900A03F3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D15C3C719D10AE900A03F3E /* Images.xcassets */; };
-		0D15C3CB19D10AE900A03F3E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D15C3C919D10AE900A03F3E /* LaunchScreen.xib */; };
 		0D15C3D719D10AEA00A03F3E /* JSSAlertViewExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D15C3D619D10AEA00A03F3E /* JSSAlertViewExampleTests.swift */; };
 		0D381A5D19D9C127004708F6 /* JSSAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D381A5C19D9C127004708F6 /* JSSAlertView.swift */; };
 		0DB0983819DEB5B8001C7385 /* ClearSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DB0983519DEB5B8001C7385 /* ClearSans-Bold.ttf */; };
@@ -37,7 +36,6 @@
 		0D15C3C219D10AE900A03F3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0D15C3C519D10AE900A03F3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D15C3C719D10AE900A03F3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0D15C3CA19D10AE900A03F3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0D15C3D019D10AEA00A03F3E /* JSSAlertViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSSAlertViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D15C3D519D10AEA00A03F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D15C3D619D10AEA00A03F3E /* JSSAlertViewExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSSAlertViewExampleTests.swift; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 				0D15C3C219D10AE900A03F3E /* ViewController.swift */,
 				0D15C3C419D10AE900A03F3E /* Main.storyboard */,
 				0D15C3C719D10AE900A03F3E /* Images.xcassets */,
-				0D15C3C919D10AE900A03F3E /* LaunchScreen.xib */,
 				0DB0982719DEB2E9001C7385 /* Resources */,
 				0D15C3BE19D10AE900A03F3E /* Supporting Files */,
 			);
@@ -236,7 +233,6 @@
 				0DB0983C19DEB633001C7385 /* ClearSans-Light.ttf in Resources */,
 				0DB0983819DEB5B8001C7385 /* ClearSans-Bold.ttf in Resources */,
 				0D15C3C619D10AE900A03F3E /* Main.storyboard in Resources */,
-				0D15C3CB19D10AE900A03F3E /* LaunchScreen.xib in Resources */,
 				0DB0983919DEB5B8001C7385 /* ClearSans-Regular.ttf in Resources */,
 				0D15C3C819D10AE900A03F3E /* Images.xcassets in Resources */,
 			);
@@ -288,14 +284,6 @@
 				0D15C3C519D10AE900A03F3E /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0D15C3C919D10AE900A03F3E /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0D15C3CA19D10AE900A03F3E /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -383,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = JSSAlertViewExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -396,6 +385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = JSSAlertViewExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
