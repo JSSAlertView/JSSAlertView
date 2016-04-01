@@ -41,6 +41,17 @@ JSSAlertView().show(
   iconImage: customIcon)
 ```
 
+You can also decide not to show any buttons with argument `noButtons: true` by doing so, JSSAlerView will close on tap and sends close callback.
+
+```swift
+JSSAlertView().show(
+	self,
+	title: "Custom color",
+	text: "All of the cool kids have purple alerts these days",
+	buttonText: "Whoa",
+	color: UIColorFromHex(0x9b59b6, alpha: 1))
+```
+
 You can also provide a callback function to run after the alert is dismissed, specify custom fonts and change the alert's text color from dark to light.
 
 ```swift
