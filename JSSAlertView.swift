@@ -28,6 +28,7 @@ class JSSAlertView: UIViewController {
     var closeAction:(()->Void)!
     var cancelAction:(()->Void)!
     var isAlertOpen:Bool = false
+	var noButtons: Bool = false
     
     enum FontType {
         case Title, Text, Button
@@ -137,10 +138,13 @@ class JSSAlertView: UIViewController {
         if textView != nil {
             textView.textColor = color
         }
-        buttonLabel.textColor = color
-        if cancelButtonLabel != nil {
-            cancelButtonLabel.textColor = color
-        }
+		if self.noButtons == false {
+			buttonLabel.textColor = color
+			if cancelButtonLabel != nil {
+				cancelButtonLabel.textColor = color
+			}
+		}
+		
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -195,33 +199,38 @@ class JSSAlertView: UIViewController {
         }
         
         // position the buttons
-        yPos += self.padding
-        
-        var buttonWidth = self.alertWidth
-        if self.cancelButton != nil {
-            buttonWidth = self.alertWidth/2
-            self.cancelButton.frame = CGRect(x: 0, y: yPos, width: buttonWidth-0.5, height: self.buttonHeight)
-            if self.cancelButtonLabel != nil {
-                self.cancelButtonLabel.frame = CGRect(x: self.padding, y: (self.buttonHeight/2) - 15, width: buttonWidth - (self.padding*2), height: 30)
-            }
-        }
-        
-        let buttonX = buttonWidth == self.alertWidth ? 0 : buttonWidth
-        self.dismissButton.frame = CGRect(x: buttonX, y: yPos, width: buttonWidth, height: self.buttonHeight)
-        if self.buttonLabel != nil {
-            self.buttonLabel.frame = CGRect(x: self.padding, y: (self.buttonHeight/2) - 15, width: buttonWidth - (self.padding*2), height: 30)
-        }
-        
-        // set button fonts
-        if self.buttonLabel != nil {
-            buttonLabel.font = UIFont(name: self.buttonFont, size: 20)
-        }
-        if self.cancelButtonLabel != nil {
-            cancelButtonLabel.font = UIFont(name: self.buttonFont, size: 20)
-        }
-        
-        yPos += self.buttonHeight
-        
+		
+		if self.noButtons == false {
+			yPos += self.padding
+			
+			var buttonWidth = self.alertWidth
+			if self.cancelButton != nil {
+				buttonWidth = self.alertWidth/2
+				self.cancelButton.frame = CGRect(x: 0, y: yPos, width: buttonWidth-0.5, height: self.buttonHeight)
+				if self.cancelButtonLabel != nil {
+					self.cancelButtonLabel.frame = CGRect(x: self.padding, y: (self.buttonHeight/2) - 15, width: buttonWidth - (self.padding*2), height: 30)
+				}
+			}
+			
+			let buttonX = buttonWidth == self.alertWidth ? 0 : buttonWidth
+			self.dismissButton.frame = CGRect(x: buttonX, y: yPos, width: buttonWidth, height: self.buttonHeight)
+			if self.buttonLabel != nil {
+				self.buttonLabel.frame = CGRect(x: self.padding, y: (self.buttonHeight/2) - 15, width: buttonWidth - (self.padding*2), height: 30)
+			}
+			
+			// set button fonts
+			if self.buttonLabel != nil {
+				buttonLabel.font = UIFont(name: self.buttonFont, size: 20)
+			}
+			if self.cancelButtonLabel != nil {
+				cancelButtonLabel.font = UIFont(name: self.buttonFont, size: 20)
+			}
+			yPos += self.buttonHeight
+		}else{
+			yPos += self.padding
+		}
+		
+		
         // size the background view
         self.alertBackgroundView.frame = CGRect(x: 0, y: 0, width: self.alertWidth, height: yPos)
         
@@ -251,7 +260,7 @@ class JSSAlertView: UIViewController {
         return alertview
     }
     
-    func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
+	func show(viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool?=false, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
         self.rootViewController = viewController
         
         if((viewController.navigationController) != nil) {
@@ -322,45 +331,49 @@ class JSSAlertView: UIViewController {
         }
         
         // Button
-        self.dismissButton = UIButton()
-        let buttonColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.8))
-        let buttonHighlightColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.9))
-        dismissButton.setBackgroundImage(buttonColor, forState: .Normal)
-        dismissButton.setBackgroundImage(buttonHighlightColor, forState: .Highlighted)
-        dismissButton.addTarget(self, action: #selector(JSSAlertView.buttonTap), forControlEvents: .TouchUpInside)
-        alertBackgroundView!.addSubview(dismissButton)
-        // Button text
-        self.buttonLabel = UILabel()
-        buttonLabel.textColor = textColor
-        buttonLabel.numberOfLines = 1
-        buttonLabel.textAlignment = .Center
-        if let text = buttonText {
-            buttonLabel.text = text
-        } else {
-            buttonLabel.text = "OK"
-        }
-        dismissButton.addSubview(buttonLabel)
-        
-        // Second cancel button
-        if cancelButtonText != nil {
-            self.cancelButton = UIButton()
-            let buttonColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.8))
-            let buttonHighlightColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.9))
-            cancelButton.setBackgroundImage(buttonColor, forState: .Normal)
-            cancelButton.setBackgroundImage(buttonHighlightColor, forState: .Highlighted)
-            cancelButton.addTarget(self, action: #selector(JSSAlertView.cancelButtonTap), forControlEvents: .TouchUpInside)
-            alertBackgroundView!.addSubview(cancelButton)
-            // Button text
-            self.cancelButtonLabel = UILabel()
-            cancelButtonLabel.alpha = 0.7
-            cancelButtonLabel.textColor = textColor
-            cancelButtonLabel.numberOfLines = 1
-            cancelButtonLabel.textAlignment = .Center
-            cancelButtonLabel.text = cancelButtonText		
-            
-            cancelButton.addSubview(cancelButtonLabel)
-        }
-        
+		self.noButtons = true
+		if noButtons == false {
+			self.noButtons = false
+			self.dismissButton = UIButton()
+			let buttonColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.8))
+			let buttonHighlightColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.9))
+			dismissButton.setBackgroundImage(buttonColor, forState: .Normal)
+			dismissButton.setBackgroundImage(buttonHighlightColor, forState: .Highlighted)
+			dismissButton.addTarget(self, action: #selector(JSSAlertView.buttonTap), forControlEvents: .TouchUpInside)
+			alertBackgroundView!.addSubview(dismissButton)
+			// Button text
+			self.buttonLabel = UILabel()
+			buttonLabel.textColor = textColor
+			buttonLabel.numberOfLines = 1
+			buttonLabel.textAlignment = .Center
+			if let text = buttonText {
+				buttonLabel.text = text
+			} else {
+				buttonLabel.text = "OK"
+			}
+			dismissButton.addSubview(buttonLabel)
+			
+			// Second cancel button
+			if cancelButtonText != nil {
+				self.cancelButton = UIButton()
+				let buttonColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.8))
+				let buttonHighlightColor = UIImage.withColor(adjustBrightness(baseColor!, amount: 0.9))
+				cancelButton.setBackgroundImage(buttonColor, forState: .Normal)
+				cancelButton.setBackgroundImage(buttonHighlightColor, forState: .Highlighted)
+				cancelButton.addTarget(self, action: #selector(JSSAlertView.cancelButtonTap), forControlEvents: .TouchUpInside)
+				alertBackgroundView!.addSubview(cancelButton)
+				// Button text
+				self.cancelButtonLabel = UILabel()
+				cancelButtonLabel.alpha = 0.7
+				cancelButtonLabel.textColor = textColor
+				cancelButtonLabel.numberOfLines = 1
+				cancelButtonLabel.textAlignment = .Center
+				cancelButtonLabel.text = cancelButtonText
+				
+				cancelButton.addSubview(cancelButtonLabel)
+			}
+		}
+		
         // Animate it in
         self.view.alpha = 0
         UIView.animateWithDuration(0.2, animations: {
@@ -442,7 +455,20 @@ class JSSAlertView: UIViewController {
         }
         return screenSize
     }
-    
+	
+	override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+		if let touch = touches.first {
+			let locationPoint = touch.locationInView(self.view)
+			let converted = self.containerView.convertPoint(locationPoint, fromView: self.view)
+			if self.containerView.pointInside(converted, withEvent: event){
+				if self.noButtons == true {
+					closeView(true, source: .Cancel)	
+				}
+				
+			}
+		}
+	}
+	
 }
 
 
