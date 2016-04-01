@@ -158,7 +158,7 @@ class JSSAlertView: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        let size = self.screenSize()
+        let size = self.rootViewControllerSize()
         self.viewWidth = size.width
         self.viewHeight = size.height
         
@@ -252,7 +252,7 @@ class JSSAlertView: UIViewController {
     }
     
     func show(viewController: UIViewController, title: String, text: String?=nil, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil) -> JSSAlertViewResponder {
-        self.rootViewController = viewController.view.window!.rootViewController
+        self.rootViewController = viewController
         
         if((viewController.navigationController) != nil) {
             self.rootViewController = viewController.navigationController
@@ -427,7 +427,14 @@ class JSSAlertView: UIViewController {
         self.view.removeFromSuperview()
     }
     
-    
+	func rootViewControllerSize() -> CGSize {
+		let size = self.rootViewController.view.frame.size
+		if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
+			return CGSizeMake(size.height, size.width)
+		}
+		return size
+	}
+	
     func screenSize() -> CGSize {
         let screenSize = UIScreen.mainScreen().bounds.size
         if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation) {
