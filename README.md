@@ -8,7 +8,7 @@
 
 A custom "modal" alert view for iOS 7+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after [vikmeup's](https://github.com/vikmeup) [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift).
 
-![BackgroundImage](https://raw.githubusercontent.com/stakes/JSSAlertView/master/gh-demo.gif)
+![BackgroundImage](https://github.com/openstakes/JSSAlertView/blob/master/screenshots/gh-demo.gif)
 
 ## Try out (Over Cocoapods)
 
