@@ -8,33 +8,29 @@
 
 Pod::Spec.new do |s|
   s.name             = "JSSAlertView"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of JSSAlertView."
+  s.version          = "1.0.0"
+  s.summary          = "Custom HUD, modal alert view for iOS 8+ written in Swift"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
+  s.description      = <<-DESC "A custom modal alert view for iOS 8+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after vikmeup's SCLAlertView."
                        DESC
 
   s.homepage         = "https://github.com/openstakes/JSSAlertView"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.screenshots      = "https://raw.githubusercontent.com/stakes/JSSAlertView/master/gh-demo.gif"
   s.license          = 'MIT'
-  s.author           = { "Tomas Sykora, jr." => "jump@syky.cz" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/JSSAlertView.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "Jay Stakelon" => "", "Tomas Sykora, jr." => "jump@syky.cz" }
+  s.source           = { :git => "https://github.com/openstakes/JSSAlertView.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/syky27'
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '8.3'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
   s.resource_bundles = {
     'JSSAlertView' => ['Pod/Assets/*.png']
   }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
