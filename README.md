@@ -1,10 +1,42 @@
 # JSSAlertView
 
+[![CI Status](http://img.shields.io/travis/Tomas Sykora, jr./JSSAlertView.svg?style=flat)](https://travis-ci.org/Tomas Sykora, jr./JSSAlertView)
+[![Version](https://img.shields.io/cocoapods/v/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
+[![License](https://img.shields.io/cocoapods/l/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
+[![Platform](https://img.shields.io/cocoapods/p/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
+
+
 A custom "modal" alert view for iOS 7+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after [vikmeup's](https://github.com/vikmeup) [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift).
 
 ![BackgroundImage](https://raw.githubusercontent.com/stakes/JSSAlertView/master/gh-demo.gif)
 
-### How to use
+## Try out (Over Cocoapods)
+
+```shell 
+pod try JSSAlertView
+```
+
+## Try out (Cloning repo)
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Installation
+
+JSSAlertView is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'JSSAlertView'
+```
+
+## Usage
+
+**Make sure you imported JSSAlertView with following**
+
+```swift
+import JSSAlertView
+```
+
 
 The most minimal alert just has a title. 
 
@@ -87,6 +119,13 @@ alertview.addCancelAction(myCancelCallback)
 
 See the included example project for more!
 
-### How to install
 
-Just add the JSSAlertView.swift file to your Xcode project. Maybe one day I'll make it available through CocoaPods.
+## Author
+
+The initial author is Jay Stakelon http://stakelon.com
+
+Current maintainer is Tomas Sykora, jr. http://syky.cz
+
+## License
+
+JSSAlertView is available under the MIT license. See the LICENSE file for more info.
