@@ -20,17 +20,17 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = "https://github.com/openstakes/JSSAlertView"
-  s.screenshots      = [  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/1.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/2.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/3.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/4.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/5.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/6.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/7.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/8.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/9.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/10.png",
-						  "https://github.com/openstakes/JSSAlertView/blob/master/screenshots/11.png"]
+  s.screenshots      = [  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/1.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/2.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/3.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/4.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/5.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/6.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/7.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/8.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/9.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/10.png",
+						  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/11.png"]
   s.license          = 'MIT'
   s.author           = { "Jay Stakelon" => "", "Tomas Sykora, jr." => "jump@syky.cz" }
   s.source           = { :git => "https://github.com/openstakes/JSSAlertView.git", :tag => s.version.to_s }
