@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "JSSAlertView"
-  s.version          = "1.1.1"
+  s.version          = "1.1.2"
   s.summary          = "Custom HUD, modal alert view for iOS 8+ written in Swift"
 
 # This description is used to generate tags and improve search results.
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/openstakes/JSSAlertView.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/syky27'
 
-  s.platform     = :ios, '8.3'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
