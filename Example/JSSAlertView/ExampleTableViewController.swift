@@ -30,7 +30,7 @@ class ExampleTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 11
+        return 12
     }
 
 	
@@ -60,6 +60,8 @@ class ExampleTableViewController: UITableViewController {
 			cell.textLabel?.text = "Callback example"
 		case 10:
 			cell.textLabel?.text = "Kitchen sink"
+		case 11:
+			cell.textLabel?.text = "Delayed ⏲"
 		default:
 			break
 		}
@@ -107,6 +109,9 @@ class ExampleTableViewController: UITableViewController {
 			alertview.setTextFont("ClearSans")
 			alertview.setButtonFont("ClearSans-Light")
 			alertview.setTextTheme(.Light)
+		case 11:
+			JSSAlertView().show(self, title: "Delayed!", text: "This alert is using a custom font: Clear Sans to be specific", delay: 3)
+
 			
 		default:
 			print("Nada")

@@ -47,6 +47,16 @@ JSSAlertView().show(
 )
 ```
 
+The delayed Alert
+
+```swift
+JSSAlertView().show(
+  self, // the parent view controller of the alert
+  title: "I'm an alert", // the alert's title
+  delay: 3 // time in secs
+)
+```
+
 You'll always want to first pass a reference to the view controller that you wish to add the overlay and alert subviews to.
 
 Besides the default `show()` method you can call any of four alert themes: `info()`, `success()`, `warning()`, and `danger()`.
