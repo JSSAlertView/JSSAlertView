@@ -1,6 +1,6 @@
 {
   "name": "JSSAlertView",
-  "version": "1.1.1",
+  "version": "1.1.4",
   "summary": "Custom HUD, modal alert view for iOS 8+ written in Swift",
   "description": "A custom modal alert view for iOS 8+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after vikmeup's SCLAlertView.",
   "homepage": "https://github.com/openstakes/JSSAlertView",
@@ -24,7 +24,7 @@
   },
   "source": {
     "git": "https://github.com/openstakes/JSSAlertView.git",
-    "tag": "1.1.1"
+    "tag": "1.1.4"
   },
   "social_media_url": "https://twitter.com/syky27",
   "platforms": {

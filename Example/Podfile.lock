@@ -4,7 +4,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.0)
   - FBSnapshotTestCase/SwiftSupport (2.1.0):
     - FBSnapshotTestCase/Core
-  - JSSAlertView (1.1.1)
+  - JSSAlertView (1.1.4)
   - Nimble (3.2.0)
   - Nimble-Snapshots (3.0.1):
     - FBSnapshotTestCase (~> 2.0)
@@ -21,11 +21,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   JSSAlertView:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 366ecd378511d7716c79991cd8067d1eed23578d
-  JSSAlertView: 26ca37617f4805b3016b4b7bb19e040541c54bf7
+  JSSAlertView: f42fc4be811925cef72ea808746df5a6c27eb356
   Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
   Nimble-Snapshots: 0d64486715a613293ac5c9af6140b97eb9b0ae76
   Quick: a5221fc21788b6aeda934805e68b061839bc3165
