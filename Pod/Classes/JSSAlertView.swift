@@ -262,18 +262,7 @@ public class JSSAlertView: UIViewController {
 	
 	public func show(viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool?=false, buttonText: String?=nil, cancelButtonText: String?=nil, color: UIColor?=nil, iconImage: UIImage?=nil, delay: Double?=nil) -> JSSAlertViewResponder {
 		self.rootViewController = viewController
-		
-		if((viewController.navigationController) != nil) {
-			self.rootViewController = viewController.navigationController
-		}
-		
-		if rootViewController.isKindOfClass(UITableViewController){
-			let tableViewController = rootViewController as! UITableViewController
-			tableViewController.tableView.scrollEnabled = false
-		}
-		self.rootViewController.addChildViewController(self)
-		self.rootViewController.view.addSubview(view)
-		
+				
 		self.view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
 		
 		var baseColor:UIColor?
@@ -376,26 +365,30 @@ public class JSSAlertView: UIViewController {
 		
 		// Animate it in
 		self.view.alpha = 0
-		UIView.animateWithDuration(0.2, animations: {
-			self.view.alpha = 1
-		})
-		self.containerView.frame.origin.x = self.view.center.x
-		self.containerView.center.y = -500
-		UIView.animateWithDuration(0.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [], animations: {
-			self.containerView.center = self.view.center
-			self.containerView.center = CGPoint(x: UIScreen.mainScreen().bounds.size.width / 2 , y: UIScreen.mainScreen().bounds.size.width / 2)
-			
-			}, completion: { finished in
-				if let d = delay {
-					let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(d * Double(NSEC_PER_SEC)))
-					dispatch_after(delayTime, dispatch_get_main_queue()) {
-						self.closeView(true)
-					}
-				}
-
-		})
-		
-		isAlertOpen = true
+        self.definesPresentationContext = true
+        self.modalPresentationStyle = .OverFullScreen
+        viewController.presentViewController(self, animated: false, completion: {
+            // Animate it in
+            UIView.animateWithDuration(0.2, animations: {
+                self.view.alpha = 1
+            })
+            
+            self.containerView.center.x = self.view.center.x
+            self.containerView.center.y = -500
+            
+            UIView.animateWithDuration(0.5, delay: 0.05, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5, options: [], animations: {
+                self.containerView.center = self.view.center
+                }, completion: { finished in
+                    self.isAlertOpen = true
+                    if let d = delay {
+                        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(d * Double(NSEC_PER_SEC)))
+                        dispatch_after(delayTime, dispatch_get_main_queue()) {
+                            self.closeView(true)
+                        }
+                    }
+            })
+        })
+        
 		return JSSAlertViewResponder(alertview: self)
 	}
 	
@@ -415,30 +408,27 @@ public class JSSAlertView: UIViewController {
 		closeView(true, source: .Cancel);
 	}
 	
-	func closeView(withCallback:Bool, source:ActionType = .Close) {
-		UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
-			self.containerView.center.y = self.view.center.y + self.viewHeight!
-			}, completion: { finished in
-				UIView.animateWithDuration(0.1, animations: {
-					self.view.alpha = 0
-					}, completion: { finished in
-						if withCallback {
-							if let action = self.closeAction where source == .Close {
-								action()
-							}
-							else if let action = self.cancelAction where source == .Cancel {
-								action()
-							}
-						}
-						if self.rootViewController.isKindOfClass(UITableViewController){
-							let tableViewController = self.rootViewController as! UITableViewController
-							tableViewController.tableView.scrollEnabled = true
-						}
-						self.removeView()
-				})
-				
-		})
-	}
+    func closeView(withCallback: Bool, source: ActionType = .Close) {
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
+            self.containerView.center.y = self.view.center.y + self.viewHeight!
+            }, completion: { finished in
+                UIView.animateWithDuration(0.1, animations: {
+                    self.view.alpha = 0
+                    }, completion: { finished in
+                        self.dismissViewControllerAnimated(false, completion: {
+                            
+                            if withCallback {
+                                if let action = self.closeAction where source == .Close {
+                                    action()
+                                }
+                                else if let action = self.cancelAction where source == .Cancel {
+                                    action()
+                                }
+                            }
+                        })
+                })
+        })
+    }
 	
 	func removeView() {
 		isAlertOpen = false
