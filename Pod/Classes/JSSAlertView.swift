@@ -380,8 +380,13 @@ public class JSSAlertView: UIViewController {
                 self.containerView.center = self.view.center
                 }, completion: { finished in
                     self.isAlertOpen = true
+                    if let d = delay {
+                        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(d * Double(NSEC_PER_SEC)))
+                        dispatch_after(delayTime, dispatch_get_main_queue()) {
+                            self.closeView(true)
+                        }
+                    }
             })
-            
         })
         
 		return JSSAlertViewResponder(alertview: self)
@@ -403,7 +408,7 @@ public class JSSAlertView: UIViewController {
 		closeView(true, source: .Cancel);
 	}
 	
-    func closeView(withCallback:Bool, source:ActionType = .Close) {
+    func closeView(withCallback: Bool, source: ActionType = .Close) {
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
             self.containerView.center.y = self.view.center.y + self.viewHeight!
             }, completion: { finished in
