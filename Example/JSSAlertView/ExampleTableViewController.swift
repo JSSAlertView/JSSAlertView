@@ -16,7 +16,7 @@ class ExampleTableViewController: UITableViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		title = "JSSAlertView Examples"
-		tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "JSSALERTVIEWCELL")
+		tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "JSSALERTVIEWCELL")
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,18 +25,18 @@ class ExampleTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+   override func numberOfSections(in: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 12
     }
 
 	
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("JSSALERTVIEWCELL", forIndexPath: indexPath)
-		cell.textLabel?.textAlignment = .Center
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JSSALERTVIEWCELL", for: indexPath as IndexPath)
+		cell.textLabel?.textAlignment = .center
 		switch indexPath.row {
 		case 0:
 			cell.textLabel?.text = "Simple alert with no buttons"
@@ -71,7 +71,7 @@ class ExampleTableViewController: UITableViewController {
 	
 	// MARK: - Table view actions
 	
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch indexPath.row {
 		case 0:
 			JSSAlertView().show(self, title: "Boring and basic, but with a multi-line title and no buttons", noButtons: true)
@@ -79,11 +79,11 @@ class ExampleTableViewController: UITableViewController {
 			JSSAlertView().show(self, title: "Standard alert", text: "A standard alert with some text looks like this", buttonText: "Yay")
 		case 2:
 			let alertview = JSSAlertView().show(self, title: "Custom color", text: "All of the cool kids have purple alerts these days", buttonText: "Whoa", color: UIColorFromHex(0x9b59b6, alpha: 1))
-			alertview.setTextTheme(.Light)
+			alertview.setTextTheme(.light)
 		case 3:
 			let customIcon = UIImage(named: "lightbulb")
 			let alertview = JSSAlertView().show(self, title: "Custom icon", text: "Supply a UIImage as the iconImage for sexy results", buttonText: "Yes", color: UIColorFromHex(0x9b59b6, alpha: 1), iconImage: customIcon)
-			alertview.setTextTheme(.Light)
+			alertview.setTextTheme(.light)
 		case 4:
 			let alertview = JSSAlertView().show(self, title: "Check it out", text: "This alert is using a custom font: Clear Sans to be specific")
 			alertview.setTitleFont("ClearSans-Light")
@@ -108,7 +108,7 @@ class ExampleTableViewController: UITableViewController {
 			alertview.setTitleFont("ClearSans-Bold")
 			alertview.setTextFont("ClearSans")
 			alertview.setButtonFont("ClearSans-Light")
-			alertview.setTextTheme(.Light)
+			alertview.setTextTheme(.light)
 		case 11:
 			JSSAlertView().show(self, title: "Delayed!", text: "This alert is using a custom font: Clear Sans to be specific", delay: 3)
 
