@@ -392,7 +392,7 @@ open class JSSAlertView: UIViewController {
 		return JSSAlertViewResponder(alertview: self)
 	}
 	
-	func addAction(_ action: (()->Void)) {
+	func addAction(_ action: @escaping (()->Void)) {
 		self.closeAction = action
 	}
 	
@@ -400,7 +400,7 @@ open class JSSAlertView: UIViewController {
 		closeView(true, source: .close);
 	}
 	
-	func addCancelAction(_ action: (()->Void)) {
+	func addCancelAction(_ action: @escaping (()->Void)) {
 		self.cancelAction = action
 	}
 	
