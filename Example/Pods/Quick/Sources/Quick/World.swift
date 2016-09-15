@@ -52,17 +52,17 @@ final internal class World: NSObject {
     internal var isRunningAdditionalSuites = false
 #endif
 
-    private var specs: Dictionary<String, ExampleGroup> = [:]
-    private var sharedExamples: [String: SharedExampleClosure] = [:]
-    private let configuration = Configuration()
-    private var isConfigurationFinalized = false
+    fileprivate var specs: Dictionary<String, ExampleGroup> = [:]
+    fileprivate var sharedExamples: [String: SharedExampleClosure] = [:]
+    fileprivate let configuration = Configuration()
+    fileprivate var isConfigurationFinalized = false
 
     internal var exampleHooks: ExampleHooks {return configuration.exampleHooks }
     internal var suiteHooks: SuiteHooks { return configuration.suiteHooks }
 
     // MARK: Singleton Constructor
 
-    private override init() {}
+    fileprivate override init() {}
     static let sharedWorld = World()
 
     // MARK: Public Interface
@@ -145,14 +145,14 @@ final internal class World: NSObject {
 
 #if _runtime(_ObjC)
     @objc(examplesForSpecClass:)
-    private func objc_examples(_ specClass: AnyClass) -> [Example] {
+    fileprivate func objc_examples(_ specClass: AnyClass) -> [Example] {
         return examples(specClass)
     }
 #endif
 
     // MARK: Internal
 
-    internal func registerSharedExample(_ name: String, closure: SharedExampleClosure) {
+    internal func registerSharedExample(_ name: String, closure: @escaping SharedExampleClosure) {
         raiseIfSharedExampleAlreadyRegistered(name)
         sharedExamples[name] = closure
     }
@@ -197,7 +197,7 @@ final internal class World: NSObject {
         currentExampleGroup = previousExampleGroup
     }
 
-    private var allExamples: [Example] {
+    fileprivate var allExamples: [Example] {
         var all: [Example] = []
         for (_, group) in specs {
             group.walkDownExamples { all.append($0) }
@@ -205,7 +205,7 @@ final internal class World: NSObject {
         return all
     }
 
-    private var includedExamples: [Example] {
+    fileprivate var includedExamples: [Example] {
         let all = allExamples
         let included = all.filter { example in
             return self.configuration.inclusionFilters.reduce(false) { $0 || $1(example) }
@@ -218,13 +218,13 @@ final internal class World: NSObject {
         }
     }
 
-    private func raiseIfSharedExampleAlreadyRegistered(_ name: String) {
+    fileprivate func raiseIfSharedExampleAlreadyRegistered(_ name: String) {
         if sharedExamples[name] != nil {
             raiseError("A shared example named '\(name)' has already been registered.")
         }
     }
 
-    private func raiseIfSharedExampleNotRegistered(_ name: String) {
+    fileprivate func raiseIfSharedExampleNotRegistered(_ name: String) {
         if sharedExamples[name] == nil {
             raiseError("No shared example named '\(name)' has been registered. Registered shared examples: '\(Array(sharedExamples.keys))'")
         }

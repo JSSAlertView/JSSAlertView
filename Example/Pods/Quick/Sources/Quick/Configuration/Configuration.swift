@@ -49,7 +49,7 @@ final public class Configuration: NSObject {
                        whether that example should be included in the examples
                        that are run.
     */
-    public func include(_ filter: ExampleFilter) {
+    public func include(_ filter: @escaping ExampleFilter) {
         inclusionFilters.append(filter)
     }
 
@@ -63,7 +63,7 @@ final public class Configuration: NSObject {
                        whether that example should be excluded from the examples
                        that are run.
     */
-    public func exclude(_ filter: ExampleFilter) {
+    public func exclude(_ filter: @escaping ExampleFilter) {
         exclusionFilters.append(filter)
     }
 

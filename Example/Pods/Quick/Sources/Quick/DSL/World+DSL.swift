@@ -58,7 +58,7 @@ extension World {
 
 #if _runtime(_ObjC)
     @objc(beforeEachWithMetadata:)
-    internal func beforeEach(closure: BeforeExampleWithMetadataClosure) {
+    internal func beforeEach(_ closure: BeforeExampleWithMetadataClosure) {
         currentExampleGroup.hooks.appendBefore(closure)
     }
 #else
@@ -76,7 +76,7 @@ extension World {
 
 #if _runtime(_ObjC)
     @objc(afterEachWithMetadata:)
-    internal func afterEach(closure: AfterExampleWithMetadataClosure) {
+    internal func afterEach(_ closure: AfterExampleWithMetadataClosure) {
         currentExampleGroup.hooks.appendAfter(closure)
     }
 #else
@@ -133,22 +133,22 @@ extension World {
 
 #if _runtime(_ObjC)
     @objc(itWithDescription:flags:file:line:closure:)
-    private func objc_it(_ description: String, flags: FilterFlags, file: String, line: UInt, closure: @escaping () -> ()) {
+    fileprivate func objc_it(_ description: String, flags: FilterFlags, file: String, line: UInt, closure: @escaping () -> ()) {
         it(description, flags: flags, file: file, line: line, closure: closure)
     }
 
     @objc(fitWithDescription:flags:file:line:closure:)
-    private func objc_fit(_ description: String, flags: FilterFlags, file: String, line: UInt, closure: @escaping () -> ()) {
+    fileprivate func objc_fit(_ description: String, flags: FilterFlags, file: String, line: UInt, closure: @escaping () -> ()) {
         fit(description, flags: flags, file: file, line: line, closure: closure)
     }
 
     @objc(xitWithDescription:flags:file:line:closure:)
-    private func objc_xit(_ description: String, flags: FilterFlags, file: String, line: UInt, closure: @escaping () -> ()) {
+    fileprivate func objc_xit(_ description: String, flags: FilterFlags, file: String, line: UInt, closure: @escaping () -> ()) {
         xit(description, flags: flags, file: file, line: line, closure: closure)
     }
 
     @objc(itBehavesLikeSharedExampleNamed:sharedExampleContext:flags:file:line:)
-    private func objc_itBehavesLike(_ name: String, sharedExampleContext: SharedExampleContext, flags: FilterFlags, file: String, line: UInt) {
+    fileprivate func objc_itBehavesLike(_ name: String, sharedExampleContext: SharedExampleContext, flags: FilterFlags, file: String, line: UInt) {
         itBehavesLike(name, sharedExampleContext: sharedExampleContext, flags: flags, file: file, line: line)
     }
 #endif
@@ -157,7 +157,7 @@ extension World {
         print("Pending: \(description)")
     }
 
-    private var currentPhase: String {
+    fileprivate var currentPhase: String {
         if beforesCurrentlyExecuting {
             return "beforeEach"
         } else if aftersCurrentlyExecuting {

@@ -25,7 +25,7 @@ class ExampleTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-   override func numberOfSections(in: UITableView) -> Int {
+   override func numberOfSections(_ in: UITableView) -> Int {
         return 1
     }
 
