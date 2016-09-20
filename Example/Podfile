@@ -1,15 +1,14 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'JSSAlertView_Example', :exclusive => true do
+target 'JSSAlertView_Example' do
   pod 'JSSAlertView', :path => '../'
 end
 
-target 'JSSAlertView_Tests', :exclusive => true do
+target 'JSSAlertView_Tests' do
   pod 'JSSAlertView', :path => '../'
 
-  pod 'Quick', '~> 0.8'
-  pod 'Nimble', '~> 3.0'
-  pod 'FBSnapshotTestCase'
-  pod 'Nimble-Snapshots'
+pod 'Quick', :git=> 'https://github.com/Quick/Quick.git', :branch=> 'swift-3.0'
+pod 'Nimble', :git=> 'https://github.com/Quick/Nimble', :branch=> 'swift-3.0'
+pod 'FBSnapshotTestCase', :git=> 'https://github.com/Nuglif/ios-snapshot-test-case.git', :branch=> 'swift-beta-3'
 end

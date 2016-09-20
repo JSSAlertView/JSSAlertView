@@ -1,33 +1,49 @@
 PODS:
-  - FBSnapshotTestCase (2.1.0):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.0)
-  - FBSnapshotTestCase/Core (2.1.0)
-  - FBSnapshotTestCase/SwiftSupport (2.1.0):
+  - FBSnapshotTestCase (2.1.1):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.1)
+  - FBSnapshotTestCase/Core (2.1.1)
+  - FBSnapshotTestCase/SwiftSupport (2.1.1):
     - FBSnapshotTestCase/Core
-  - JSSAlertView (1.1.4)
-  - Nimble (3.2.0)
-  - Nimble-Snapshots (3.0.1):
-    - FBSnapshotTestCase (~> 2.0)
-    - Nimble
-    - Quick
-  - Quick (0.9.1)
+  - JSSAlertView (1.1.5)
+  - Nimble (5.0.0-alpha.30p1)
+  - Quick (0.9.3)
 
 DEPENDENCIES:
-  - FBSnapshotTestCase
+  - FBSnapshotTestCase (from `https://github.com/Nuglif/ios-snapshot-test-case.git`, branch `swift-beta-3`)
   - JSSAlertView (from `../`)
-  - Nimble (~> 3.0)
-  - Nimble-Snapshots
-  - Quick (~> 0.8)
+  - Nimble (from `https://github.com/Quick/Nimble`, branch `swift-3.0`)
+  - Quick (from `https://github.com/Quick/Quick.git`, branch `swift-3.0`)
 
 EXTERNAL SOURCES:
+  FBSnapshotTestCase:
+    :branch: swift-beta-3
+    :git: https://github.com/Nuglif/ios-snapshot-test-case.git
   JSSAlertView:
-    :path: ../
+    :path: "../"
+  Nimble:
+    :branch: swift-3.0
+    :git: https://github.com/Quick/Nimble
+  Quick:
+    :branch: swift-3.0
+    :git: https://github.com/Quick/Quick.git
+
+CHECKOUT OPTIONS:
+  FBSnapshotTestCase:
+    :commit: 5a3d9439efa943ee386378dbee068e9e9ccefae0
+    :git: https://github.com/Nuglif/ios-snapshot-test-case.git
+  Nimble:
+    :commit: 4b539a275d2714212ce598177d586680fc088927
+    :git: https://github.com/Quick/Nimble
+  Quick:
+    :commit: 6110c50b518a72a24cd2505c8012fa785c3b1c8e
+    :git: https://github.com/Quick/Quick.git
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 366ecd378511d7716c79991cd8067d1eed23578d
-  JSSAlertView: f42fc4be811925cef72ea808746df5a6c27eb356
-  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
-  Nimble-Snapshots: 0d64486715a613293ac5c9af6140b97eb9b0ae76
-  Quick: a5221fc21788b6aeda934805e68b061839bc3165
+  FBSnapshotTestCase: 95f1c83e738d991136f56e6c99a45bb4e63b05ab
+  JSSAlertView: 1ff5d4dcb28b00a38c0293c4c555231c02590be1
+  Nimble: c5b995b4cd57789ec44b0cfb79640fc00e61a8c7
+  Quick: 31fb576b6cbb6b028cc5e0016e4366accbb346f5
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 2510759a5fc1a72cc40171029787c03ce89f7c62
+
+COCOAPODS: 1.0.1
