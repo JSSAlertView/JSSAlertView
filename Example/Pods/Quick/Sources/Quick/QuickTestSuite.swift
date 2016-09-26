@@ -20,9 +20,9 @@ internal protocol QuickTestSuiteBuilder {
  A base class for a class cluster of Quick test suites, that should correctly
  build dynamic test suites for XCTest to execute.
  */
-public class QuickTestSuite: XCTestSuite {
+open class QuickTestSuite: XCTestSuite {
 
-    private static var builtTestSuites: Set<String> = Set()
+    fileprivate static var builtTestSuites: Set<String> = Set()
 
     /**
      Construct a test suite for a specific, selected subset of test cases (rather
@@ -36,7 +36,7 @@ public class QuickTestSuite: XCTestSuite {
      It is expected that the first call should return a valid test suite, and
      all subsequent calls should return `nil`.
      */
-    public static func selectedTestSuite(forTestCaseWithName name: String) -> QuickTestSuite? {
+    open static func selectedTestSuite(forTestCaseWithName name: String) -> QuickTestSuite? {
         guard let builder = QuickSelectedTestSuiteBuilder(forTestCaseWithName: name) else { return nil }
 
         if builtTestSuites.contains(builder.testSuiteClassName) {

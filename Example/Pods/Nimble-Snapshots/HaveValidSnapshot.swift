@@ -35,13 +35,13 @@ extension UIView : Snapshotable {
         return Instance.instance
     }
 
-    class func setReferenceImagesDirectory(directory: String?) {
+    class func setReferenceImagesDirectory(_ directory: String?) {
         sharedInstance.referenceImagesDirectory = directory
     }
 
-    class func compareSnapshot(instance: Snapshotable, isDeviceAgnostic: Bool=false, snapshot: String, record: Bool, referenceDirectory: String) -> Bool {
+    class func compareSnapshot(_ instance: Snapshotable, isDeviceAgnostic: Bool=false, snapshot: String, record: Bool, referenceDirectory: String) -> Bool {
         let snapshotController: FBSnapshotTestController = FBSnapshotTestController(testName: _testFileName())
-        snapshotController.deviceAgnostic = isDeviceAgnostic
+        snapshotController.isDeviceAgnostic = isDeviceAgnostic
         snapshotController.recordMode = record
         snapshotController.referenceImagesDirectory = referenceDirectory
 
@@ -49,10 +49,10 @@ extension UIView : Snapshotable {
 
         // Need to force a draw before we call down to the underlying snapshots library.
         let view = instance.snapshotObject
-        view?.drawViewHierarchyInRect(view!.bounds, afterScreenUpdates: true)
+        view?.drawHierarchy(in: view!.bounds, afterScreenUpdates: true)
 
         do {
-            try snapshotController.compareSnapshotOfView(view, selector: Selector(snapshot), identifier: nil)
+            try snapshotController.compareSnapshot(of: view, selector: Selector(snapshot), identifier: nil)
         }
         catch {
             return false;
@@ -64,11 +64,11 @@ extension UIView : Snapshotable {
 // Note that these must be lower case.
 var testFolderSuffixes = ["tests", "specs"]
 
-public func setNimbleTestFolder(testFolder: String) {
-    testFolderSuffixes = [testFolder.lowercaseString]
+public func setNimbleTestFolder(_ testFolder: String) {
+    testFolderSuffixes = [testFolder.lowercased()]
 }
 
-func _getDefaultReferenceDirectory(sourceFileName: String) -> String {
+func _getDefaultReferenceDirectory(_ sourceFileName: String) -> String {
     if let globalReference = FBSnapshotTest.sharedInstance.referenceImagesDirectory {
         return globalReference
     }
@@ -77,11 +77,11 @@ func _getDefaultReferenceDirectory(sourceFileName: String) -> String {
     // then append "/ReferenceImages" and use that.
 
     // Grab the file's path
-    let pathComponents: NSArray = (sourceFileName as NSString).pathComponents
+    let pathComponents: NSArray = (sourceFileName as NSString).pathComponents as NSArray
 
     // Find the directory in the path that ends with a test suffix.
     let testPath = pathComponents.filter { component -> Bool in
-        return testFolderSuffixes.filter { component.lowercaseString.hasSuffix($0) }.count > 0
+        return testFolderSuffixes.filter { (component as AnyObject).lowercased.hasSuffix($0) }.count > 0
         }.first
 
     guard let testDirectory = testPath else {
@@ -89,9 +89,9 @@ func _getDefaultReferenceDirectory(sourceFileName: String) -> String {
     }
 
     // Recombine the path components and append our own image directory.
-    let currentIndex = pathComponents.indexOfObject(testDirectory) + 1
-    let folderPathComponents: NSArray = pathComponents.subarrayWithRange(NSMakeRange(0, currentIndex))
-    let folderPath = folderPathComponents.componentsJoinedByString("/")
+    let currentIndex = pathComponents.index(of: testDirectory) + 1
+    let folderPathComponents: NSArray = pathComponents.subarray(with: NSMakeRange(0, currentIndex)) as NSArray
+    let folderPath = folderPathComponents.componentsJoined(by: "/")
 
     return folderPath + "/ReferenceImages"
 }
@@ -99,29 +99,29 @@ func _getDefaultReferenceDirectory(sourceFileName: String) -> String {
 func _testFileName() -> String {
     let name = FBSnapshotTest.sharedInstance.currentExampleMetadata!.example.callsite.file as NSString
     let type = ".\(name.pathExtension)"
-    let sanitizedName = name.lastPathComponent.stringByReplacingOccurrencesOfString(type, withString: "")
+    let sanitizedName = name.lastPathComponent.replacingOccurrences(of: type, with: "")
 
     return sanitizedName
 }
 
-func _sanitizedTestName(name: String?) -> String {
+func _sanitizedTestName(_ name: String?) -> String {
     let quickExample = FBSnapshotTest.sharedInstance.currentExampleMetadata
     var filename = name ?? quickExample!.example.name
-    filename = filename.stringByReplacingOccurrencesOfString("root example group, ", withString: "")
-    let characterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")
-    let components: NSArray = filename.componentsSeparatedByCharactersInSet(characterSet.invertedSet)
+    filename = filename.replacingOccurrences(of: "root example group, ", with: "")
+    let characterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_")
+    let components: NSArray = filename.components(separatedBy: characterSet.inverted)
 
-    return components.componentsJoinedByString("_")
+    return components.componentsJoined(by: "_")
 }
 
-func _clearFailureMessage(failureMessage: FailureMessage) {
+func _clearFailureMessage(_ failureMessage: FailureMessage) {
     failureMessage.actualValue = ""
     failureMessage.expected = ""
     failureMessage.postfixMessage = ""
     failureMessage.to = ""
 }
 
-func _performSnapshotTest(name: String?, isDeviceAgnostic: Bool=false, actualExpression: Expression<Snapshotable>, failureMessage: FailureMessage) -> Bool {
+func _performSnapshotTest(_ name: String?, isDeviceAgnostic: Bool=false, actualExpression: Expression<Snapshotable>, failureMessage: FailureMessage) -> Bool {
     let instance = try! actualExpression.evaluate()!
     let testFileLocation = actualExpression.location.file
     let referenceImageDirectory = _getDefaultReferenceDirectory(testFileLocation)
@@ -143,7 +143,7 @@ func _performSnapshotTest(name: String?, isDeviceAgnostic: Bool=false, actualExp
 
 }
 
-func _recordSnapshot(name: String?, isDeviceAgnostic: Bool=false, actualExpression: Expression<Snapshotable>, failureMessage: FailureMessage) -> Bool {
+func _recordSnapshot(_ name: String?, isDeviceAgnostic: Bool=false, actualExpression: Expression<Snapshotable>, failureMessage: FailureMessage) -> Bool {
     let instance = try! actualExpression.evaluate()!
     let testFileLocation = actualExpression.location.file
     let referenceImageDirectory = _getDefaultReferenceDirectory(testFileLocation)

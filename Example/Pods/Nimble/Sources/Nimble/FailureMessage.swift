@@ -3,15 +3,15 @@ import Foundation
 /// Encapsulates the failure message that matchers can report to the end user.
 ///
 /// This is shared state between Nimble and matchers that mutate this value.
-public class FailureMessage: NSObject {
-    public var expected: String = "expected"
-    public var actualValue: String? = "" // empty string -> use default; nil -> exclude
-    public var to: String = "to"
-    public var postfixMessage: String = "match"
-    public var postfixActual: String = ""
-    public var userDescription: String? = nil
+open class FailureMessage: NSObject {
+    open var expected: String = "expected"
+    open var actualValue: String? = "" // empty string -> use default; nil -> exclude
+    open var to: String = "to"
+    open var postfixMessage: String = "match"
+    open var postfixActual: String = ""
+    open var userDescription: String? = nil
 
-    public var stringValue: String {
+    open var stringValue: String {
         get {
             if let value = _stringValueOverride {
                 return value
@@ -33,11 +33,11 @@ public class FailureMessage: NSObject {
         _stringValueOverride = stringValue
     }
 
-    internal func stripNewlines(str: String) -> String {
-        var lines: [String] = NSString(string: str).componentsSeparatedByString("\n") as [String]
-        let whitespace = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        lines = lines.map { line in NSString(string: line).stringByTrimmingCharactersInSet(whitespace) }
-        return lines.joinWithSeparator("")
+    internal func stripNewlines(_ str: String) -> String {
+        var lines: [String] = NSString(string: str).components(separatedBy: "\n") as [String]
+        let whitespace = CharacterSet.whitespacesAndNewlines
+        lines = lines.map { line in NSString(string: line).trimmingCharacters(in: whitespace) }
+        return lines.joined(separator: "")
     }
 
     internal func computeStringValue() -> String {

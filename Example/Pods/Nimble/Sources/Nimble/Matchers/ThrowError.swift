@@ -11,13 +11,13 @@ import Foundation
 ///
 /// nil arguments indicates that the matcher should not attempt to match against
 /// that parameter.
-public func throwError<T: ErrorType>(
-    error: T? = nil,
+public func throwError<T: Error>(
+    _ error: T? = nil,
     errorType: T.Type? = nil,
     closure: ((T) -> Void)? = nil) -> MatcherFunc<Any> {
         return MatcherFunc { actualExpression, failureMessage in
 
-            var actualError: ErrorType?
+            var actualError: Error?
             do {
                 try actualExpression.evaluate()
             } catch let catchedError {
@@ -29,9 +29,9 @@ public func throwError<T: ErrorType>(
         }
 }
 
-internal func setFailureMessageForError<T: ErrorType>(
-    failureMessage: FailureMessage,
-    actualError: ErrorType?,
+internal func setFailureMessageForError<T: Error>(
+    _ failureMessage: FailureMessage,
+    actualError: Error?,
     error: T?,
     errorType: T.Type? = nil,
     closure: ((T) -> Void)?) {
@@ -60,24 +60,24 @@ internal func setFailureMessageForError<T: ErrorType>(
         }
 }
 
-internal func errorMatchesExpectedError<T: ErrorType>(
-    actualError: ErrorType,
+internal func errorMatchesExpectedError<T: Error>(
+    _ actualError: Error,
     expectedError: T) -> Bool {
         return actualError._domain == expectedError._domain
             && actualError._code   == expectedError._code
 }
 
-internal func errorMatchesExpectedError<T: ErrorType where T: Equatable>(
-    actualError: ErrorType,
-    expectedError: T) -> Bool {
+internal func errorMatchesExpectedError<T: Error>(
+    _ actualError: Error,
+    expectedError: T) -> Bool where T: Equatable {
         if let actualError = actualError as? T {
             return actualError == expectedError
         }
         return false
 }
 
-internal func errorMatchesNonNilFieldsOrClosure<T: ErrorType>(
-    actualError: ErrorType?,
+internal func errorMatchesNonNilFieldsOrClosure<T: Error>(
+    _ actualError: Error?,
     error: T?,
     errorType: T.Type?,
     closure: ((T) -> Void)?) -> Bool {
@@ -124,10 +124,10 @@ internal func errorMatchesNonNilFieldsOrClosure<T: ErrorType>(
 ///
 /// The closure only gets called when an error was thrown.
 public func throwError(
-    closure closure: ((ErrorType) -> Void)? = nil) -> MatcherFunc<Any> {
+    closure: ((Error) -> Void)? = nil) -> MatcherFunc<Any> {
         return MatcherFunc { actualExpression, failureMessage in
             
-            var actualError: ErrorType?
+            var actualError: Error?
             do {
                 try actualExpression.evaluate()
             } catch let catchedError {
@@ -140,9 +140,9 @@ public func throwError(
 }
 
 internal func setFailureMessageForError(
-    failureMessage: FailureMessage,
-    actualError: ErrorType?,
-    closure: ((ErrorType) -> Void)?) {
+    _ failureMessage: FailureMessage,
+    actualError: Error?,
+    closure: ((Error) -> Void)?) {
         failureMessage.postfixMessage = "throw error"
 
         if let _ = closure {
@@ -159,8 +159,8 @@ internal func setFailureMessageForError(
 }
 
 internal func errorMatchesNonNilFieldsOrClosure(
-    actualError: ErrorType?,
-    closure: ((ErrorType) -> Void)?) -> Bool {
+    _ actualError: Error?,
+    closure: ((Error) -> Void)?) -> Bool {
         var matches = false
 
         if let actualError = actualError {

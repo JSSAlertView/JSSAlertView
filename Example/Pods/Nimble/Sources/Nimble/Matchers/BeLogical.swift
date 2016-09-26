@@ -1,6 +1,6 @@
 import Foundation
 
-internal func matcherWithFailureMessage<T, M: Matcher where M.ValueType == T>(matcher: M, postprocessor: (FailureMessage) -> Void) -> FullMatcherFunc<T> {
+internal func matcherWithFailureMessage<T, M: Matcher>(_ matcher: M, postprocessor: (FailureMessage) -> Void) -> FullMatcherFunc<T> where M.ValueType == T {
     return FullMatcherFunc { actualExpression, failureMessage, isNegation in
         let pass: Bool
         if isNegation {
@@ -39,7 +39,7 @@ public func beTruthy<T>() -> MatcherFunc<T> {
         failureMessage.postfixMessage = "be truthy"
         let actualValue = try actualExpression.evaluate()
         if let actualValue = actualValue {
-            if let actualValue = actualValue as? BooleanType {
+            if let actualValue = actualValue as? Bool {
                 return actualValue.boolValue == true
             }
         }
@@ -54,7 +54,7 @@ public func beFalsy<T>() -> MatcherFunc<T> {
         failureMessage.postfixMessage = "be falsy"
         let actualValue = try actualExpression.evaluate()
         if let actualValue = actualValue {
-            if let actualValue = actualValue as? BooleanType {
+            if let actualValue = actualValue as? Bool {
                 return actualValue.boolValue != true
             }
         }
@@ -66,14 +66,14 @@ public func beFalsy<T>() -> MatcherFunc<T> {
 extension NMBObjCMatcher {
     public class func beTruthyMatcher() -> NMBObjCMatcher {
         return NMBObjCMatcher { actualExpression, failureMessage in
-            let expr = actualExpression.cast { ($0 as? NSNumber)?.boolValue ?? false as BooleanType? }
+            let expr = actualExpression.cast { ($0 as? NSNumber)?.boolValue ?? false as Bool? }
             return try! beTruthy().matches(expr, failureMessage: failureMessage)
         }
     }
 
     public class func beFalsyMatcher() -> NMBObjCMatcher {
         return NMBObjCMatcher { actualExpression, failureMessage in
-            let expr = actualExpression.cast { ($0 as? NSNumber)?.boolValue ?? false as BooleanType? }
+            let expr = actualExpression.cast { ($0 as? NSNumber)?.boolValue ?? false as Bool? }
             return try! beFalsy().matches(expr, failureMessage: failureMessage)
         }
     }
