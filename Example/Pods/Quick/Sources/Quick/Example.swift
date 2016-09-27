@@ -22,11 +22,11 @@ final public class Example: NSObject {
 
     weak internal var group: ExampleGroup?
 
-    private let internalDescription: String
-    private let closure: () -> ()
-    private let flags: FilterFlags
+    fileprivate let internalDescription: String
+    fileprivate let closure: () -> ()
+    fileprivate let flags: FilterFlags
 
-    internal init(description: String, callsite: Callsite, flags: FilterFlags, closure: () -> ()) {
+    internal init(description: String, callsite: Callsite, flags: FilterFlags, closure: @escaping () -> ()) {
         self.internalDescription = description
         self.closure = closure
         self.callsite = callsite
@@ -47,8 +47,8 @@ final public class Example: NSObject {
     */
     public var name: String {
         switch group!.name {
-        case .Some(let groupName): return "\(groupName), \(description)"
-        case .None: return description
+        case .some(let groupName): return "\(groupName), \(description)"
+        case .none: return description
         }
     }
 
@@ -67,19 +67,19 @@ final public class Example: NSObject {
         world.currentExampleMetadata = exampleMetadata
 
         world.exampleHooks.executeBefores(exampleMetadata)
-        group!.phase = .BeforesExecuting
+        group!.phase = .beforesExecuting
         for before in group!.befores {
-            before(exampleMetadata: exampleMetadata)
+            before(exampleMetadata)
         }
-        group!.phase = .BeforesFinished
+        group!.phase = .beforesFinished
 
         closure()
 
-        group!.phase = .AftersExecuting
+        group!.phase = .aftersExecuting
         for after in group!.afters {
-            after(exampleMetadata: exampleMetadata)
+            after(exampleMetadata)
         }
-        group!.phase = .AftersFinished
+        group!.phase = .aftersFinished
         world.exampleHooks.executeAfters(exampleMetadata)
 
         numberOfExamplesRun += 1

@@ -16,7 +16,7 @@ class ExampleTableViewController: UITableViewController {
 		tableView.delegate = self
 		tableView.dataSource = self
 		title = "JSSAlertView Examples"
-		tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "JSSALERTVIEWCELL")
+		tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "JSSALERTVIEWCELL")
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,19 +25,19 @@ class ExampleTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 12
     }
 
 	
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("JSSALERTVIEWCELL", forIndexPath: indexPath)
-		cell.textLabel?.textAlignment = .Center
-		switch indexPath.row {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JSSALERTVIEWCELL", for: indexPath)
+		cell.textLabel?.textAlignment = .center
+		switch (indexPath as NSIndexPath).row {
 		case 0:
 			cell.textLabel?.text = "Simple alert with no buttons"
 		case 1:
@@ -71,8 +71,8 @@ class ExampleTableViewController: UITableViewController {
 	
 	// MARK: - Table view actions
 	
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		switch indexPath.row {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		switch (indexPath as NSIndexPath).row {
 		case 0:
 			JSSAlertView().show(self, title: "Boring and basic, but with a multi-line title and no buttons", noButtons: true)
 		case 1:

@@ -10,7 +10,7 @@ public struct Snapshot {
     }
 }
 
-public func snapshot(name: String? = nil) -> Snapshot {
+public func snapshot(_ name: String? = nil) -> Snapshot {
     return Snapshot(name: name)
 }
 
@@ -24,10 +24,10 @@ public func ==(lhs: Expectation<Snapshotable>, rhs: Snapshot) {
 
 // MARK: - Nicer syntax using emoji
 
-public func 📷(snapshottable: Snapshotable) {
+public func 📷(_ snapshottable: Snapshotable) {
     expect(snapshottable).to(recordSnapshot())
 }
 
-public func 📷(snapshottable: Snapshotable, named name: String) {
+public func 📷(_ snapshottable: Snapshotable, named name: String) {
     expect(snapshottable).to(recordSnapshot(named: name))
 }
