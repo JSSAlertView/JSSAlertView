@@ -1,0 +1,22 @@
+{
+  "name": "JSSAlertView",
+  "version": "0.1.0",
+  "summary": "A short description of JSSAlertView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/JSSAlertView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Tomas Sykora, jr.": "jump@syky.cz"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/JSSAlertView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "JSSAlertView/Classes/**/*"
+}

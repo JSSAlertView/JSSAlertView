@@ -1,0 +1,16 @@
+PODS:
+  - JSSAlertView (0.1.0)
+
+DEPENDENCIES:
+  - JSSAlertView (from `../`)
+
+EXTERNAL SOURCES:
+  JSSAlertView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JSSAlertView: 29ae5d0e2b8ee358614bc514f33a13059b4078b1
+
+PODFILE CHECKSUM: e77a119773e3d84a8d4d56c22a15cd6e2f9dfbd8
+
+COCOAPODS: 1.0.1

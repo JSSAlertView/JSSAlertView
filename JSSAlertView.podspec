@@ -7,36 +7,37 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'JSSAlertView'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of JSSAlertView.'
+s.name             = "JSSAlertView"
+s.version          = "3.0.0"
+s.summary          = "Custom HUD, modal alert view for iOS 8+ written in Swift"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
+s.description      = <<-DESC "A custom modal alert view for iOS 8+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after vikmeup's SCLAlertView."
+DESC
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+s.homepage         = "https://github.com/openstakes/JSSAlertView"
+s.screenshots      = [  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/1.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/2.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/3.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/4.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/5.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/6.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/7.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/8.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/9.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/10.png",
+"https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/11.png"]
+s.license          = 'MIT'
+s.author           = { "Jay Stakelon" => "", "Tomas Sykora, jr." => "jump@syky.cz" }
+s.source           = { :git => "https://github.com/openstakes/JSSAlertView.git", :tag => s.version.to_s }
+s.social_media_url = 'https://twitter.com/syky27'
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/JSSAlertView'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Tomas Sykora, jr.' => 'jump@syky.cz' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/JSSAlertView.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+s.platform     = :ios, '8.0'
+s.requires_arc = true
 
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'JSSAlertView/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'JSSAlertView' => ['JSSAlertView/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+s.source_files = 'Pod/Classes/**/*'
 end
