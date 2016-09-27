@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JSSAlertView_Example' do
+  pod 'JSSAlertView', :path => '../'
+
+  target 'JSSAlertView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
