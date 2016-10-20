@@ -1,11 +1,26 @@
 # JSSAlertView
 
+
+![Swift](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
+![Swift2](http://img.shields.io/badge/swift-2.2-brightgreen.svg)
 [![CI Status](http://img.shields.io/travis/Tomas Sykora, jr./JSSAlertView.svg?style=flat)](https://travis-ci.org/Tomas Sykora, jr./JSSAlertView)
 [![Version](https://img.shields.io/cocoapods/v/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 [![License](https://img.shields.io/cocoapods/l/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 [![Platform](https://img.shields.io/cocoapods/p/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 
 
+# SWIFT Versions!
+For swift3 use:
+
+```
+pod 'JSSAlerView'
+```
+
+
+For swift2 use:
+```
+pod 'JSSAlerView', '~> 1.1.5'
+```
 A custom "modal" alert view for iOS 7+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after [vikmeup's](https://github.com/vikmeup) [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift).
 
 ![BackgroundImage](https://github.com/openstakes/JSSAlertView/blob/master/screenshots/gh-demo.gif)
