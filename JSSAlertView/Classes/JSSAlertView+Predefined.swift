@@ -18,15 +18,15 @@ extension JSSAlertView {
 	               delay: Double? = nil) -> JSSAlertViewResponder {
 
 
-		let alertview = showAboveViewController(viewController: viewController,
-		                                        title: title,
-		                                        text: text,
-		                                        withoutButtons: noButtons,
-		                                        cancelButtonText: cancelButtonText,
-		                                        extraButtonText: buttonText,
-		                                        color: UIColorFromHex(0x3498db, alpha: 1),
-		                                        icon: iconImage,
-		                                        withDelay: delay)
+		let alertview = show(viewController,
+		                     title: title,
+		                     text: text,
+		                     noButtons: noButtons,
+		                     buttonText: buttonText,
+		                     cancelButtonText: cancelButtonText,
+		                     color: UIColorFromHex(0x3498db, alpha: 1),
+		                     iconImage: iconImage,
+		                     delay: delay)
 
 
 		alertview.setTextTheme(.light)
@@ -41,15 +41,15 @@ extension JSSAlertView {
 	                  cancelButtonText: String? = nil,
 	                  delay: Double?=nil) -> JSSAlertViewResponder {
 
-		return showAboveViewController(viewController: viewController,
-		                               title: title,
-		                               text: text,
-		                               withoutButtons: noButtons,
-		                               cancelButtonText: cancelButtonText,
-		                               extraButtonText: buttonText,
-		                               color: UIColorFromHex(0x2ecc71, alpha: 1),
-		                               icon: iconImage,
-		                               withDelay: delay)
+		return show(viewController,
+		            title: title,
+		            text: text,
+		            noButtons: noButtons,
+		            buttonText: buttonText,
+		            cancelButtonText: cancelButtonText,
+		            color: UIColorFromHex(0x2ecc71, alpha: 1),
+		            iconImage: iconImage,
+		            delay: delay)
 
 	}
 
@@ -61,15 +61,15 @@ extension JSSAlertView {
 	                  cancelButtonText: String? = nil,
 	                  delay: Double?=nil) -> JSSAlertViewResponder {
 
-		return showAboveViewController(viewController: viewController,
-		                               title: title,
-		                               text: text,
-		                               withoutButtons: noButtons,
-		                               cancelButtonText: cancelButtonText,
-		                               extraButtonText: buttonText,
-		                               color: UIColorFromHex(0xf1c40f, alpha: 1),
-		                               icon: iconImage,
-		                               withDelay: delay)
+		return show(viewController,
+		            title: title,
+		            text: text,
+		            noButtons: noButtons,
+		            buttonText: buttonText,
+		            cancelButtonText: cancelButtonText,
+		            color: UIColorFromHex(0xf1c40f, alpha: 1),
+		            iconImage: iconImage,
+		            delay: delay)
 
 	}
 
@@ -82,15 +82,15 @@ extension JSSAlertView {
 	                 delay: Double?=nil) -> JSSAlertViewResponder {
 
 
-		let alertview = showAboveViewController(viewController: viewController,
-		                                        title: title,
-		                                        text: text,
-		                                        withoutButtons: noButtons,
-		                                        cancelButtonText: cancelButtonText,
-		                                        extraButtonText: buttonText,
-		                                        color: UIColorFromHex(0xe74c3c, alpha: 1),
-		                                        icon: iconImage,
-		                                        withDelay: delay)
+		let alertview = show(viewController,
+		                     title: title,
+		                     text: text,
+		                     noButtons: noButtons,
+		                     buttonText: buttonText,
+		                     cancelButtonText: cancelButtonText,
+		                     color: UIColorFromHex(0xe74c3c, alpha: 1),
+		                     iconImage: iconImage,
+		                     delay: delay)
 		alertview.setTextTheme(.light)
 		return alertview
 	}

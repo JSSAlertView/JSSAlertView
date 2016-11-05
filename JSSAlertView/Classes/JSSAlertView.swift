@@ -62,6 +62,14 @@ open class JSSAlertView: UIViewController {
 
 	// Allow alerts to be closed/renamed in a chainable manner
 
+	//MARK: Initializators
+	override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+		super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
+	}
+
+	public required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
 	func recolorText(_ color: UIColor) {
 		titleLabel.textColor = color
@@ -77,18 +85,7 @@ open class JSSAlertView: UIViewController {
 
 	}
 
-	override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-		super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
-	}
 
-	public required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	override open func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
-	}
 
 	open override func viewDidLayoutSubviews() {
 		super.viewWillLayoutSubviews()
@@ -168,21 +165,18 @@ open class JSSAlertView: UIViewController {
 	}
 
 
-	//MARK: - Predefined Color Variations
-
-
 
 	// MARK: - Main Show Method
-
-	open func showAboveViewController(viewController: UIViewController,
-	                                  title: String,
-	                                  text: String? = nil,
-	                                  withoutButtons noButtons: Bool = false,
-	                                  cancelButtonText: String? = nil,
-	                                  extraButtonText buttonText: String? = nil,
-	                                  color: UIColor? = nil,
-	                                  icon iconImage: UIImage? = nil,
-	                                  withDelay delay: Double? = nil) -> JSSAlertViewResponder{
+	@discardableResult
+	public func  show(_ viewController: UIViewController,
+	                           title: String,
+	                           text: String?=nil,
+	                           noButtons: Bool = false,
+	                           buttonText: String? = nil,
+	                           cancelButtonText: String? = nil,
+	                           color: UIColor? = nil,
+	                           iconImage: UIImage? = nil,
+	                           delay: Double? = nil) -> JSSAlertViewResponder {
 
 		rootViewController = viewController
 		view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
@@ -387,6 +381,12 @@ open class JSSAlertView: UIViewController {
 
 			}
 		}
+	}
+
+	//MARK: - Memory management
+	override open func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
 	}
 }
 

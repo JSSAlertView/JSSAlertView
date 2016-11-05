@@ -138,7 +138,7 @@ class ViewController: UITableViewController {
 			alertview.setButtonFont("ClearSans-Light")
 			alertview.setTextTheme(.light)
 		case 11:
-			JSSAlertView().show(self,
+			JSSAlertView().show( self,
 			                    title: "Delayed!",
 			                    text: "This alert is using a custom font: Clear Sans to be specific",
 			                    delay: 3)
