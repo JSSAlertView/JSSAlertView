@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1C99F791544D709C060EA2B7E7CB12D8 /* Pods-JSSAlertView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5870D41F45CCD0F982E8E12863999D9B /* Pods-JSSAlertView_Tests-dummy.m */; };
+		354B53431DCE8E85007DF95D /* JSSAlertViewResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354B53421DCE8E85007DF95D /* JSSAlertViewResponder.swift */; };
+		354B53451DCE8FAC007DF95D /* JSSAlertView+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354B53441DCE8FAC007DF95D /* JSSAlertView+UIColor.swift */; };
+		354B53471DCE8FD6007DF95D /* JSSAlertView+Depricated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354B53461DCE8FD6007DF95D /* JSSAlertView+Depricated.swift */; };
+		354B53491DCE9049007DF95D /* JSSAlertView+Predefined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354B53481DCE9049007DF95D /* JSSAlertView+Predefined.swift */; };
 		40D493EEA434471CEBDED7565F75B24C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		6CFA457FEB765228B5663A4BAED50FA7 /* Pods-JSSAlertView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 56BA1FEAC89D6F64DAF5CF61984AFAA2 /* Pods-JSSAlertView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A06835C8E53757EFC7B5C3FF5D1CAC84 /* JSSAlertView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FF6537504BD3AC8C3D1915AB9A0B5F3A /* JSSAlertView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +41,10 @@
 		28CBD4443CC1751BEB82626CEAA5371F /* Pods-JSSAlertView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JSSAlertView_Tests-resources.sh"; sourceTree = "<group>"; };
 		2CE0D55E6E14A57DA3C395937BFB0531 /* Pods-JSSAlertView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JSSAlertView_Example-umbrella.h"; sourceTree = "<group>"; };
 		30A849D3057993D212C50F3909E5F2AE /* Pods-JSSAlertView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JSSAlertView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		354B53421DCE8E85007DF95D /* JSSAlertViewResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSSAlertViewResponder.swift; sourceTree = "<group>"; };
+		354B53441DCE8FAC007DF95D /* JSSAlertView+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSSAlertView+UIColor.swift"; sourceTree = "<group>"; };
+		354B53461DCE8FD6007DF95D /* JSSAlertView+Depricated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSSAlertView+Depricated.swift"; sourceTree = "<group>"; };
+		354B53481DCE9049007DF95D /* JSSAlertView+Predefined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSSAlertView+Predefined.swift"; sourceTree = "<group>"; };
 		432CA912CD5F5BEE748E5D9B55492E36 /* JSSAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = JSSAlertView.modulemap; sourceTree = "<group>"; };
 		459C7CC186C05252D7C24E275D12B402 /* JSSAlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JSSAlertView.swift; sourceTree = "<group>"; };
 		46767F695A62FFBC69C823ED8529B84C /* Pods-JSSAlertView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JSSAlertView_Example-resources.sh"; sourceTree = "<group>"; };
@@ -208,6 +216,10 @@
 			isa = PBXGroup;
 			children = (
 				459C7CC186C05252D7C24E275D12B402 /* JSSAlertView.swift */,
+				354B53421DCE8E85007DF95D /* JSSAlertViewResponder.swift */,
+				354B53441DCE8FAC007DF95D /* JSSAlertView+UIColor.swift */,
+				354B53461DCE8FD6007DF95D /* JSSAlertView+Depricated.swift */,
+				354B53481DCE9049007DF95D /* JSSAlertView+Predefined.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -345,8 +357,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				354B53451DCE8FAC007DF95D /* JSSAlertView+UIColor.swift in Sources */,
 				A2B320BBDA034E4253C86A942C7DACEA /* JSSAlertView-dummy.m in Sources */,
+				354B53491DCE9049007DF95D /* JSSAlertView+Predefined.swift in Sources */,
+				354B53471DCE8FD6007DF95D /* JSSAlertView+Depricated.swift in Sources */,
 				CDA298DB1CB601EE0B145C46F1E32936 /* JSSAlertView.swift in Sources */,
+				354B53431DCE8E85007DF95D /* JSSAlertViewResponder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
