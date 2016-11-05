@@ -262,9 +262,17 @@ open class JSSAlertView: UIViewController {
 	}
 
 	@discardableResult
-	open func show(_ viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool = false, buttonText: String? = nil, cancelButtonText: String? = nil, color: UIColor? = nil, iconImage: UIImage? = nil, delay: Double? = nil) -> JSSAlertViewResponder {
-		rootViewController = viewController
+	open func show(_ viewController: UIViewController,
+	               title: String,
+	               text: String?=nil,
+	               noButtons: Bool = false,
+	               buttonText: String? = nil,
+	               cancelButtonText: String? = nil,
+	               color: UIColor? = nil,
+	               iconImage: UIImage? = nil,
+	               delay: Double? = nil) -> JSSAlertViewResponder {
 
+		rootViewController = viewController
 		view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
 
 		var baseColor:UIColor?
@@ -383,8 +391,7 @@ open class JSSAlertView: UIViewController {
 				}, completion: { finished in
 					self.isAlertOpen = true
 					if let d = delay {
-						let delayTime = DispatchTime.now() + d * Double(NSEC_PER_SEC)
-						DispatchQueue.main.asyncAfter(deadline: delayTime, execute: {
+						DispatchQueue.main.asyncAfter(deadline: .now() + d, execute: {
 							self.closeView(true)
 						})
 					}
