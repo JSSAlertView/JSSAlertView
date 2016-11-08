@@ -21,6 +21,7 @@ open class JSSAlertView: UIViewController {
     var buttonLabel: UILabel!
     var cancelButtonLabel: UILabel!
     var titleLabel: UILabel!
+    var timerLabel:UILabel!
     var textView: UITextView!
     weak var rootViewController: UIViewController!
     var iconImage: UIImage!
@@ -29,6 +30,8 @@ open class JSSAlertView: UIViewController {
     var cancelAction: (()->Void)!
     var isAlertOpen: Bool = false
     var noButtons: Bool = false
+    
+    var timeLeft: Double?
     
     enum FontType {
         case title, text, button
@@ -198,6 +201,15 @@ open class JSSAlertView: UIViewController {
             yPos += ceil(textRect.height) + padding / 2
         }
         
+        if self.timerLabel != nil {
+            let timerString = timerLabel.text! as NSString
+            let timerSize = CGSize(width: contentWidth, height: 20)
+            let timerRect = timerString.boundingRect(with: timerSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: titleAttr, context: nil)
+            //yPos += padding
+            self.timerLabel.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(timerRect.size.height))
+            yPos += ceil(timerRect.size.height)
+        }
+
         // position the buttons
         
         if !noButtons {
@@ -262,7 +274,7 @@ open class JSSAlertView: UIViewController {
     }
     
     @discardableResult
-    open func show(_ viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool = false, buttonText: String? = nil, cancelButtonText: String? = nil, color: UIColor? = nil, iconImage: UIImage? = nil, delay: Double? = nil) -> JSSAlertViewResponder {
+    open func show(_ viewController: UIViewController, title: String, text: String?=nil, timeLeft: Double? = nil, noButtons: Bool = false, buttonText: String? = nil, cancelButtonText: String? = nil, color: UIColor? = nil, iconImage: UIImage? = nil, delay: Double? = nil) -> JSSAlertViewResponder {
         rootViewController = viewController
         
         view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
@@ -320,6 +332,18 @@ open class JSSAlertView: UIViewController {
             textView.text = text
             containerView.addSubview(textView)
         }
+        
+        //timer
+        if let time = timeLeft {
+            self.timerLabel = UILabel()
+            timerLabel.textAlignment = .center
+            self.timeLeft = time
+            self.timerLabel.font = UIFont(name: self.textFont, size: 27)
+            self.timerLabel.textColor = UIColor(colorLiteralRed: 159/255, green: 159/255, blue: 159/255, alpha: 1)
+            self.containerView.addSubview(timerLabel)
+            configureTimer()
+        }
+
         
         // Button
         self.noButtons = true
@@ -393,6 +417,45 @@ open class JSSAlertView: UIViewController {
         
         return JSSAlertViewResponder(alertview: self)
     }
+    
+    func configureTimer() {
+        guard let dateDouble = timeLeft else {
+            return
+        }
+        self.timerLabel.text = stringFromDouble(number: dateDouble)
+        
+        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+        
+    }
+    
+    func update() {
+        guard let timeLeftExists = timeLeft else {
+            return
+        }
+        if(timeLeftExists > 0) {
+            self.timeLeft! -= 1
+            self.timerLabel.text = stringFromDouble(number: timeLeft!)
+            
+        } else {
+            closeView(false)
+        }
+    }
+    
+    func stringFromDouble(number: Double) -> String {
+        
+        let form = DateFormatter()
+        form.dateFormat = "HH:mm:ss"
+        let dateComp = NSDateComponents()
+        dateComp.second = Int(number)
+        
+        let date = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)?.date(from: dateComp as DateComponents)
+        
+        let str = form.string(from: date!)
+        
+        return str
+        
+    }
+
     
     func addAction(_ action: @escaping () -> Void) {
         self.closeAction = action
