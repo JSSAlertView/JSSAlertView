@@ -13,13 +13,13 @@
 For swift3 use:
 
 ```
-pod 'JSSAlerView'
+pod 'JSSAlertView'
 ```
 
 
 For swift2 use:
 ```
-pod 'JSSAlerView', '~> 1.1.5'
+pod 'JSSAlertView', '~> 1.1.5'
 ```
 A custom "modal" alert view for iOS 7+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after [vikmeup's](https://github.com/vikmeup) [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift).
 
