@@ -21,6 +21,7 @@ open class JSSAlertView: UIViewController {
     var buttonLabel: UILabel!
     var cancelButtonLabel: UILabel!
     var titleLabel: UILabel!
+    var timerLabel:UILabel!
     var textView: UITextView!
     weak var rootViewController: UIViewController!
     var iconImage: UIImage!
@@ -30,12 +31,15 @@ open class JSSAlertView: UIViewController {
     var isAlertOpen: Bool = false
     var noButtons: Bool = false
     
+    var timeLeft: UInt?
+    
     enum FontType {
-        case title, text, button
+        case title, text, button, timer
     }
     var titleFont = "HelveticaNeue-Light"
     var textFont = "HelveticaNeue"
     var buttonFont = "HelveticaNeue-Bold"
+    var timerFont = "HelveticaNeue"
     
     var defaultColor = UIColorFromHex(0xF2F4F4, alpha: 1)
     
@@ -85,6 +89,10 @@ open class JSSAlertView: UIViewController {
             self.alertview.setFont(fontStr, type: .button)
         }
         
+        open func setTimerFont(_ fontStr: String) {
+            self.alertview.setFont(fontStr, type: .timer)
+        }
+        
         open func setTextTheme(_ theme: TextColorTheme) {
             self.alertview.setTextTheme(theme)
         }
@@ -119,6 +127,13 @@ open class JSSAlertView: UIViewController {
             } else {
                 self.buttonLabel.font = UIFont.systemFont(ofSize: 24)
             }
+        case .timer:
+            self.timerFont = fontStr
+            if let font = UIFont(name: self.timerFont, size: 27) {
+                self.buttonLabel.font = font
+            } else {
+                self.buttonLabel.font = UIFont.systemFont(ofSize: 27)
+            }
         }
         // relayout to account for size changes
         self.viewDidLayoutSubviews()
@@ -137,6 +152,9 @@ open class JSSAlertView: UIViewController {
         titleLabel.textColor = color
         if textView != nil {
             textView.textColor = color
+        }
+        if timerLabel != nil {
+            timerLabel.textColor = color
         }
         if self.noButtons == false {
             buttonLabel.textColor = color
@@ -198,6 +216,18 @@ open class JSSAlertView: UIViewController {
             yPos += ceil(textRect.height) + padding / 2
         }
         
+        // position timer
+        if self.timerLabel != nil {
+            let timerString = timerLabel.text! as NSString
+            let timerSize = CGSize(width: contentWidth, height: 20)
+            let timerRect = timerString.boundingRect(with: timerSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: titleAttr, context: nil)
+            self.timerLabel.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(timerRect.size.height))
+            yPos += ceil(timerRect.size.height)
+            
+            // set timer font
+            timerLabel.font = UIFont(name: timerFont, size: 27)
+        }
+
         // position the buttons
         
         if !noButtons {
@@ -238,31 +268,31 @@ open class JSSAlertView: UIViewController {
     }
     
     @discardableResult
-    open func info(_ viewController: UIViewController, title: String, text: String? = nil, buttonText: String? = nil, cancelButtonText: String? = nil, delay: Double? = nil) -> JSSAlertViewResponder {
-        let alertview = show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0x3498db, alpha: 1), delay: delay)
+    open func info(_ viewController: UIViewController, title: String, text: String? = nil, buttonText: String? = nil, cancelButtonText: String? = nil, delay: Double? = nil, timeLeft: UInt? = nil) -> JSSAlertViewResponder {
+        let alertview = show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0x3498db, alpha: 1), delay: delay, timeLeft: timeLeft)
         alertview.setTextTheme(.light)
         return alertview
     }
     
     @discardableResult
-    open func success(_ viewController: UIViewController, title: String, text: String?=nil, buttonText: String? = nil, cancelButtonText: String? = nil, delay: Double?=nil) -> JSSAlertViewResponder {
-        return self.show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0x2ecc71, alpha: 1), delay: delay)
+    open func success(_ viewController: UIViewController, title: String, text: String?=nil, buttonText: String? = nil, cancelButtonText: String? = nil, delay: Double?=nil, timeLeft: UInt? = nil) -> JSSAlertViewResponder {
+        return self.show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0x2ecc71, alpha: 1), delay: delay, timeLeft: timeLeft)
     }
     
     @discardableResult
-    open func warning(_ viewController: UIViewController, title: String, text: String?=nil, buttonText: String? = nil, cancelButtonText: String? = nil, delay: Double?=nil) -> JSSAlertViewResponder {
-        return show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0xf1c40f, alpha: 1), delay: delay)
+    open func warning(_ viewController: UIViewController, title: String, text: String?=nil, buttonText: String? = nil, cancelButtonText: String? = nil, delay: Double?=nil, timeLeft: UInt? = nil) -> JSSAlertViewResponder {
+        return show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0xf1c40f, alpha: 1), delay: delay, timeLeft: timeLeft)
     }
     
     @discardableResult
-    open func danger(_ viewController: UIViewController, title: String, text: String?=nil, buttonText: String? = nil, cancelButtonText: String?=nil, delay: Double?=nil) -> JSSAlertViewResponder {
-        let alertview = self.show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0xe74c3c, alpha: 1), delay: delay)
+    open func danger(_ viewController: UIViewController, title: String, text: String?=nil, buttonText: String? = nil, cancelButtonText: String?=nil, delay: Double?=nil, timeLeft: UInt? = nil) -> JSSAlertViewResponder {
+        let alertview = self.show(viewController, title: title, text: text, buttonText: buttonText, cancelButtonText: cancelButtonText, color: UIColorFromHex(0xe74c3c, alpha: 1), delay: delay, timeLeft: timeLeft)
         alertview.setTextTheme(.light)
         return alertview
     }
     
     @discardableResult
-    open func show(_ viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool = false, buttonText: String? = nil, cancelButtonText: String? = nil, color: UIColor? = nil, iconImage: UIImage? = nil, delay: Double? = nil) -> JSSAlertViewResponder {
+    open func show(_ viewController: UIViewController, title: String, text: String?=nil, noButtons: Bool = false, buttonText: String? = nil, cancelButtonText: String? = nil, color: UIColor? = nil, iconImage: UIImage? = nil, delay: Double? = nil, timeLeft: UInt? = nil) -> JSSAlertViewResponder {
         rootViewController = viewController
         
         view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
@@ -320,6 +350,18 @@ open class JSSAlertView: UIViewController {
             textView.text = text
             containerView.addSubview(textView)
         }
+        
+        //timer
+        if let time = timeLeft {
+            self.timerLabel = UILabel()
+            timerLabel.textAlignment = .center
+            self.timeLeft = time
+            self.timerLabel.font = UIFont(name: self.timerFont, size: 27)
+            self.timerLabel.textColor = textColor
+            self.containerView.addSubview(timerLabel)
+            configureTimer()
+        }
+
         
         // Button
         self.noButtons = true
@@ -393,6 +435,48 @@ open class JSSAlertView: UIViewController {
         
         return JSSAlertViewResponder(alertview: self)
     }
+    
+    func configureTimer() {
+        
+        guard let dateUInt = timeLeft else {
+            return
+        }
+        self.timerLabel.text = stringFromUInt(number: dateUInt)
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
+        
+    }
+    
+    func updateTimerLabel() {
+        guard let timeLeftExists = timeLeft else {
+            return
+        }
+        if(timeLeftExists > 0) {
+            
+            self.timeLeft! -= 1
+            self.timerLabel.text = stringFromUInt(number: timeLeft!)
+            
+        } else {
+            closeView(false)
+        }
+    }
+    
+    func stringFromUInt(number: UInt) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        
+        let dateComp = NSDateComponents()
+        dateComp.second = Int(number)
+        
+        let date = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)?.date(from: dateComp as DateComponents)
+        
+        let str = formatter.string(from: date!)
+        
+        return str
+        
+    }
+
     
     func addAction(_ action: @escaping () -> Void) {
         self.closeAction = action
