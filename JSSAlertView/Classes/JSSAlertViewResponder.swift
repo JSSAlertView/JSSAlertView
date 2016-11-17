@@ -31,6 +31,10 @@ open class JSSAlertViewResponder {
 	open func setTextFont(_ fontStr: String) {
 		self.alertview.setFont(fontStr, type: .text)
 	}
+    
+    open func setTimerFont(_ fontStr: String) {
+        self.alertview.setFont(fontStr, type: .timer)
+    }
 
 	open func setButtonFont(_ fontStr: String) {
 		self.alertview.setFont(fontStr, type: .button)

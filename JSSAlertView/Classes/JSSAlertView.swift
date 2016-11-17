@@ -26,6 +26,7 @@ open class JSSAlertView: UIViewController {
 	var buttonLabel: UILabel!
 	var cancelButtonLabel: UILabel!
 	var titleLabel: UILabel!
+    var timerLabel:UILabel!
 	var textView: UITextView!
 	weak var rootViewController: UIViewController!
 	var iconImage: UIImage!
@@ -34,13 +35,16 @@ open class JSSAlertView: UIViewController {
 	var cancelAction: (()->Void)!
 	var isAlertOpen: Bool = false
 	var noButtons: Bool = false
+    
+    var timeLeft: UInt?
 
 	enum FontType {
-		case title, text, button
+		case title, text, button, timer
 	}
 	var titleFont = "HelveticaNeue-Light"
 	var textFont = "HelveticaNeue"
 	var buttonFont = "HelveticaNeue-Bold"
+    var timerFont = "HelveticaNeue"
 
 	var defaultColor = UIColorFromHex(0xF2F4F4, alpha: 1)
 
@@ -76,6 +80,9 @@ open class JSSAlertView: UIViewController {
 		if textView != nil {
 			textView.textColor = color
 		}
+        if timerLabel != nil {
+            timerLabel.textColor = color
+        }
 		if self.noButtons == false {
 			buttonLabel.textColor = color
 			if cancelButtonLabel != nil {
@@ -125,6 +132,15 @@ open class JSSAlertView: UIViewController {
 			yPos += ceil(textRect.height) + padding / 2
 		}
 
+        // position timer
+        if self.timerLabel != nil {
+            let timerString = timerLabel.text! as NSString
+            let timerSize = CGSize(width: contentWidth, height: 20)
+            let timerRect = timerString.boundingRect(with: timerSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: titleAttr, context: nil)
+            self.timerLabel.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(timerRect.size.height))
+            yPos += ceil(timerRect.size.height)
+        }
+        
 		// position the buttons
 
 		if !noButtons {
@@ -176,7 +192,8 @@ open class JSSAlertView: UIViewController {
 	                           cancelButtonText: String? = nil,
 	                           color: UIColor? = nil,
 	                           iconImage: UIImage? = nil,
-	                           delay: Double? = nil) -> JSSAlertViewResponder {
+	                           delay: Double? = nil,
+	                           timeLeft: UInt? = nil) -> JSSAlertViewResponder {
 
 		rootViewController = viewController
 		view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
@@ -234,6 +251,17 @@ open class JSSAlertView: UIViewController {
 			textView.text = text
 			containerView.addSubview(textView)
 		}
+        
+        //timer
+        if let time = timeLeft {
+            self.timerLabel = UILabel()
+            timerLabel.textAlignment = .center
+            self.timeLeft = time
+            self.timerLabel.font = UIFont(name: self.timerFont, size: 27)
+            self.timerLabel.textColor = textColor
+            self.containerView.addSubview(timerLabel)
+            configureTimer()
+        }
 
 		// Button
 		self.noButtons = true
@@ -421,6 +449,13 @@ extension JSSAlertView {
 			} else {
 				self.buttonLabel.font = UIFont.systemFont(ofSize: 24)
 			}
+        case .timer:
+            self.timerFont = fontStr
+            if let font = UIFont(name: self.timerFont, size: 27) {
+                self.buttonLabel.font = font
+            } else {
+                self.buttonLabel.font = UIFont.systemFont(ofSize: 27)
+            }
 		}
 		// relayout to account for size changes
 		self.viewDidLayoutSubviews()
