@@ -31,7 +31,7 @@ open class JSSAlertView: UIViewController {
     var isAlertOpen: Bool = false
     var noButtons: Bool = false
     
-    var timeLeft: Double?
+    var timeLeft: UInt?
     
     enum FontType {
         case title, text, button
@@ -201,11 +201,11 @@ open class JSSAlertView: UIViewController {
             yPos += ceil(textRect.height) + padding / 2
         }
         
+        // position timer
         if self.timerLabel != nil {
             let timerString = timerLabel.text! as NSString
             let timerSize = CGSize(width: contentWidth, height: 20)
             let timerRect = timerString.boundingRect(with: timerSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: titleAttr, context: nil)
-            //yPos += padding
             self.timerLabel.frame = CGRect(x: self.padding, y: yPos, width: self.alertWidth - (self.padding*2), height: ceil(timerRect.size.height))
             yPos += ceil(timerRect.size.height)
         }
@@ -274,7 +274,7 @@ open class JSSAlertView: UIViewController {
     }
     
     @discardableResult
-    open func show(_ viewController: UIViewController, title: String, text: String?=nil, timeLeft: Double? = nil, noButtons: Bool = false, buttonText: String? = nil, cancelButtonText: String? = nil, color: UIColor? = nil, iconImage: UIImage? = nil, delay: Double? = nil) -> JSSAlertViewResponder {
+    open func show(_ viewController: UIViewController, title: String, text: String?=nil, timeLeft: UInt? = nil, noButtons: Bool = false, buttonText: String? = nil, cancelButtonText: String? = nil, color: UIColor? = nil, iconImage: UIImage? = nil, delay: Double? = nil) -> JSSAlertViewResponder {
         rootViewController = viewController
         
         view.backgroundColor = UIColorFromHex(0x000000, alpha: 0.7)
@@ -419,10 +419,11 @@ open class JSSAlertView: UIViewController {
     }
     
     func configureTimer() {
-        guard let dateDouble = timeLeft else {
+        
+        guard let dateUInt = timeLeft else {
             return
         }
-        self.timerLabel.text = stringFromDouble(number: dateDouble)
+        self.timerLabel.text = stringFromUInt(number: dateUInt)
         
         _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
         
@@ -434,23 +435,24 @@ open class JSSAlertView: UIViewController {
         }
         if(timeLeftExists > 0) {
             self.timeLeft! -= 1
-            self.timerLabel.text = stringFromDouble(number: timeLeft!)
+            self.timerLabel.text = stringFromUInt(number: timeLeft!)
             
         } else {
             closeView(false)
         }
     }
     
-    func stringFromDouble(number: Double) -> String {
+    func stringFromUInt(number: UInt) -> String {
         
-        let form = DateFormatter()
-        form.dateFormat = "HH:mm:ss"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        
         let dateComp = NSDateComponents()
         dateComp.second = Int(number)
         
         let date = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)?.date(from: dateComp as DateComponents)
         
-        let str = form.string(from: date!)
+        let str = formatter.string(from: date!)
         
         return str
         
