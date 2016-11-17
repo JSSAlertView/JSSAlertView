@@ -30,7 +30,7 @@ class ViewController: UITableViewController {
 	}
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 12
+		return 13
 	}
 
 
@@ -62,6 +62,8 @@ class ViewController: UITableViewController {
 			cell.textLabel?.text = "Kitchen sink"
 		case 11:
 			cell.textLabel?.text = "Delayed ⏲"
+        case 12:
+            cell.textLabel?.text = "Timer"
 		default:
 			break
 		}
@@ -111,7 +113,8 @@ class ViewController: UITableViewController {
 			alertview.setTextTheme(.light)
 		case 11:
 			JSSAlertView().show(self, title: "Delayed!", text: "This alert is using a custom font: Clear Sans to be specific", delay: 3)
-
+        case 12:
+            JSSAlertView().show(self, title: "Timer!", text: "Here's a modal alert with timer", timeLeft: 10)
 
 		default:
 			print("Nada")
