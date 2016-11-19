@@ -23,7 +23,7 @@ pod 'JSSAlertView', '~> 1.1.5'
 ```
 A custom "modal" alert view for iOS 7+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after [vikmeup's](https://github.com/vikmeup) [SCLAlertView](https://github.com/vikmeup/SCLAlertView-Swift).
 
-![BackgroundImage](https://github.com/openstakes/JSSAlertView/blob/master/screenshots/gh-demo.gif)
+![BackgroundImage](https://github.com/JSSAlertView/JSSAlertView/blob/swift3/Example/GIF/jss.gif)
 
 ## Try out (Over Cocoapods)
 
