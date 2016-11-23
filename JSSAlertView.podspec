@@ -16,10 +16,10 @@ s.summary          = "Custom HUD, modal alert view for iOS 8+ written in Swift"
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
-s.description      = <<-DESC "A custom modal alert view for iOS 8+ written in Swift, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after vikmeup's SCLAlertView."
+s.description      = <<-DESC "A custom modal alert view for swift3 and swift2, with a couple basic themes and support for custom icons and fonts. Inspired by and modeled after vikmeup's SCLAlertView."
 DESC
 
-s.homepage         = "https://github.com/openstakes/JSSAlertView"
+s.homepage         = "https://github.com/JSSAlertView/JSSAlertView"
 s.screenshots      = [  "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/1.png",
 "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/2.png",
 "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/3.png",
@@ -33,7 +33,7 @@ s.screenshots      = [  "https://raw.githubusercontent.com/openstakes/JSSAlertVi
 "https://raw.githubusercontent.com/openstakes/JSSAlertView/master/screenshots/11.png"]
 s.license          = 'MIT'
 s.author           = { "Jay Stakelon" => "", "Tomas Sykora, jr." => "jump@syky.cz" }
-s.source           = { :git => "https://github.com/openstakes/JSSAlertView.git", :tag => s.version.to_s }
+s.source           = { :git => "https://github.com/JSSAlertView/JSSAlertView", :tag => s.version.to_s }
 s.social_media_url = 'https://twitter.com/syky27'
 
 s.platform     = :ios, '8.0'
