@@ -3,7 +3,7 @@
 
 ![Swift](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
 ![Swift2](http://img.shields.io/badge/swift-2.2-brightgreen.svg)
-[![CI Status](http://img.shields.io/travis/Tomas Sykora, jr./JSSAlertView.svg?style=flat)](https://travis-ci.org/Tomas Sykora, jr./JSSAlertView)
+[![Build Status](https://travis-ci.org/JSSAlertView/JSSAlertView.svg?branch=master)](https://travis-ci.org/JSSAlertView/JSSAlertView)
 [![Version](https://img.shields.io/cocoapods/v/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 [![License](https://img.shields.io/cocoapods/l/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 [![Platform](https://img.shields.io/cocoapods/p/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
