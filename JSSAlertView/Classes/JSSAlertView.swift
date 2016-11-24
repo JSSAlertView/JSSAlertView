@@ -13,10 +13,16 @@
 import Foundation
 import UIKit
 
+/// Enum describing Text Color theme
+///
+/// - dark: Dark Text Color theme
+/// - light: Light Text Color theme
 public enum TextColorTheme {
 	case dark, light
 }
 
+
+/// Custom modal controller
 open class JSSAlertView: UIViewController {
 
 	var containerView: UIView!
@@ -67,14 +73,25 @@ open class JSSAlertView: UIViewController {
 	// Allow alerts to be closed/renamed in a chainable manner
 
 	//MARK: Initializators
+    
+	/// Public contructor overriding parent
+	///
+	/// - Parameters:
+	///   - nibNameOrNil: Nib name is never used, should be always nil, there is no nib in JSSAlertView
+	///   - nibBundleOrNil: Nib bundle is never used there is no nib bundle in JJSAlertView Controller
 	override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName:nibNameOrNil, bundle:nibBundleOrNil)
 	}
 
+    
 	public required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+    
+	/// Recolors text to given color
+	///
+	/// - Parameter color: Color to be recolored to
 	func recolorText(_ color: UIColor) {
 		titleLabel.textColor = color
 		if textView != nil {
@@ -93,7 +110,8 @@ open class JSSAlertView: UIViewController {
 	}
 
 
-
+    
+	
 	open override func viewDidLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 		let size = self.rootViewControllerSize()
@@ -183,8 +201,24 @@ open class JSSAlertView: UIViewController {
 
 
 	// MARK: - Main Show Method
+    
+	/// Main method for rendering JSSAlertViewController
+    ///
+	///
+	/// - Parameters:
+	///   - viewController: ViewController above which JSSAlertView will be shown
+	///   - title: JSSAlertView title
+	///   - text: JSSAlertView text
+	///   - noButtons: Option for no buttons, ehen activated, it gets closed by tap
+	///   - buttonText: Button text
+	///   - cancelButtonText: Cancel button text
+	///   - color: JSSAlertView color
+	///   - iconImage: Image which gets placed above title
+	///   - delay: Delay after which JSSAlertView automatically disapears
+	///   - timeLeft: Counter aka Tinder counter shows time in seconds
+	/// - Returns: returns JSSAlertViewResponder
 	@discardableResult
-	public func  show(_ viewController: UIViewController,
+	public func show(_ viewController: UIViewController,
 	                           title: String,
 	                           text: String?=nil,
 	                           noButtons: Bool = false,
@@ -337,23 +371,40 @@ open class JSSAlertView: UIViewController {
 	}
 
 
-
+    
+	/// Adding action for button which is not cancel button
+	///
+	/// - Parameter action: func which gets executed when disapearing
 	func addAction(_ action: @escaping () -> Void) {
 		self.closeAction = action
 	}
-
+    
+    
+	/// Method for removing JSSAlertView from view when there are no buttons
 	func buttonTap() {
 		closeView(true, source: .close);
 	}
 
+    
+	/// Adds action as a function which gets executed when cancel button is tapped
+	///
+	/// - Parameter action: func which gets executed
 	func addCancelAction(_ action: @escaping () -> Void) {
 		self.cancelAction = action
 	}
 
+    
+	/// Cancel button tap
 	func cancelButtonTap() {
 		closeView(true, source: .cancel);
 	}
 
+    
+	/// Removes view
+	///
+	/// - Parameters:
+	///   - withCallback: callback availabel
+	///   - source: Type of removing view see ActionType
 	func closeView(_ withCallback: Bool, source: ActionType = .close) {
 		UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
 			self.containerView.center.y = self.view.center.y + self.viewHeight!
@@ -376,12 +427,18 @@ open class JSSAlertView: UIViewController {
 		})
 	}
 
+    
+	/// Removes view from superview
 	func removeView() {
 		isAlertOpen = false
 		removeFromParentViewController()
 		view.removeFromSuperview()
 	}
 
+    
+	/// Returns rootViewControllers size
+	///
+	/// - Returns: root view controller size
 	func rootViewControllerSize() -> CGSize {
 		let size = rootViewController.view.frame.size
 		if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
@@ -390,6 +447,10 @@ open class JSSAlertView: UIViewController {
 		return size
 	}
 
+    
+	/// Gets screen size
+	///
+	/// - Returns: screen size
 	func screenSize() -> CGSize {
 		let screenSize = UIScreen.main.bounds.size
 		if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
@@ -398,6 +459,12 @@ open class JSSAlertView: UIViewController {
 		return screenSize
 	}
 
+    
+	/// Tracks touches used when there are no buttons to remove view
+	///
+	/// - Parameters:
+	///   - touches: touched actions form user
+	///   - event: touches event
 	open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		if let touch = touches.first {
 			let locationPoint = touch.location(in: view)
@@ -412,6 +479,8 @@ open class JSSAlertView: UIViewController {
 	}
 
 	//MARK: - Memory management
+    
+	/// Memory management not actually needed
 	override open func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -424,6 +493,12 @@ open class JSSAlertView: UIViewController {
 
 //MARK: - Setters
 extension JSSAlertView {
+    
+	/// Sets Font
+	///
+	/// - Parameters:
+	///   - fontStr: name of font
+	///   - type: target to set font to e.g. title, text ...
 	func setFont(_ fontStr: String, type: FontType) {
 		switch type {
 		case .title:
@@ -461,6 +536,10 @@ extension JSSAlertView {
 		self.viewDidLayoutSubviews()
 	}
 
+    
+	/// Sets theme
+	///
+	/// - Parameter theme: TextColorTheme
 	func setTextTheme(_ theme: TextColorTheme) {
 		switch theme {
 		case .light:

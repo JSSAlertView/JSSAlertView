@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = "JSSAlertView"
-s.version          = "3.0.2"
+s.version          = "3.0.3"
 s.summary          = "Custom HUD, modal alert view for iOS 8+ written in Swift"
 
 # This description is used to generate tags and improve search results.
