@@ -58,7 +58,7 @@ open class JSSAlertView: UIViewController {
 	var darkTextColor = UIColorFromHex(0x000000, alpha: 0.75)
 	var lightTextColor = UIColorFromHex(0xffffff, alpha: 0.9)
 
-	enum ActionType {
+	public enum ActionType {
 		case close, cancel
 	}
 

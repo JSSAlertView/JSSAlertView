@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'JSSAlertView'
-s.version          = '3.0.4'
+s.version          = '3.0.5'
 s.summary          = 'Custom HUD, with buttons supporting themes and Tinder like countdown'
 
 # This description is used to generate tags and improve search results.
