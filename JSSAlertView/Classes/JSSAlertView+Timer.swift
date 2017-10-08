@@ -21,7 +21,7 @@ extension JSSAlertView {
     }
     
     ///Updates the timer label every second and close alert when time exceeds
-    func updateTimerLabel() {
+    @objc func updateTimerLabel() {
         guard let timeLeftExists = timeLeft else {
             return
         }
