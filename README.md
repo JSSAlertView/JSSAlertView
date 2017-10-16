@@ -1,7 +1,8 @@
 # JSSAlertView
 
 
-![Swift](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
+![Swift4](http://img.shields.io/badge/swift-4.0-brightgreen.svg)
+![Swift3](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
 ![Swift2](http://img.shields.io/badge/swift-2.2-brightgreen.svg)
 [![Build Status](https://travis-ci.org/JSSAlertView/JSSAlertView.svg?branch=master)](https://travis-ci.org/JSSAlertView/JSSAlertView)
 [![Version](https://img.shields.io/cocoapods/v/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
@@ -10,10 +11,17 @@
 
 
 # SWIFT Versions!
-For swift3 use:
+For swift4 use:
 
 ```
 pod 'JSSAlertView'
+```
+
+
+For swift3 use:
+
+```
+pod 'JSSAlertView', '~> 3.0.4'
 ```
 
 

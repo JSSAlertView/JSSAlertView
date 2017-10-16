@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'JSSAlertView'
-s.version          = '3.0.4'
+s.version          = '4.0.0'
 s.summary          = 'Custom HUD, with buttons supporting themes and Tinder like countdown'
 
 # This description is used to generate tags and improve search results.
@@ -17,7 +17,7 @@ s.summary          = 'Custom HUD, with buttons supporting themes and Tinder like
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 s.description      = <<-DESC 
-A custom modal alert view for swift3 and swift2,
+A custom modal alert view for swift4, swift3 and swift2,
 with a couple basic themes and support for custom icons and fonts
 and Tinder like countdown.
 The early version was inspired by and modeled after vikmeup's SCLAlertView.
