@@ -23,7 +23,7 @@ extension JSSAlertView {
 	///   - delay: delay
 	///   - timeLeft: time left Tinder Style
 	/// - Returns: Returns Responder
-    @discardableResult
+    	@discardableResult
 	open func info(_ viewController: UIViewController,
 	               title: String,
 	               text: String? = nil,
@@ -51,15 +51,15 @@ extension JSSAlertView {
     
 	/// Success style 🎉
 	///
-    /// - Parameters:
-    ///   - viewController: root view controller
-    ///   - title: title
-    ///   - text: text
-    ///   - buttonText: button text
-    ///   - cancelButtonText: cancel button text
-    ///   - delay: delay
-    ///   - timeLeft: time left Tinder Style
-    /// - Returns: Returns Responder
+	/// - Parameters:
+	///   - viewController: root view controller
+	///   - title: title
+	///   - text: text
+	///   - buttonText: button text
+	///   - cancelButtonText: cancel button text
+	///   - delay: delay
+	///   - timeLeft: time left Tinder Style
+	/// - Returns: Returns Responder
 	@discardableResult
 	open func success(_ viewController: UIViewController,
 	                  title: String,
@@ -84,15 +84,16 @@ extension JSSAlertView {
     
 	/// Warning style ⚠️
 	///
-    /// - Parameters:
-    ///   - viewController: root view controller
-    ///   - title: title
-    ///   - text: text
-    ///   - buttonText: button text
-    ///   - cancelButtonText: cancel button text
-    ///   - delay: delay
-    ///   - timeLeft: time left Tinder Style
-    /// - Returns: Returns Responder	@discardableResult
+	/// - Parameters:
+	///   - viewController: root view controller
+	///   - title: title
+	///   - text: text
+	///   - buttonText: button text
+	///   - cancelButtonText: cancel button text
+	///   - delay: delay
+	///   - timeLeft: time left Tinder Style
+	/// - Returns: Returns Responder	
+	@discardableResult
 	open func warning(_ viewController: UIViewController,
 	                  title: String,
 	                  text: String?=nil,
@@ -116,15 +117,15 @@ extension JSSAlertView {
     
 	/// Danger style ☢️
 	///
-    /// - Parameters:
-    ///   - viewController: root view controller
-    ///   - title: title
-    ///   - text: text
-    ///   - buttonText: button text
-    ///   - cancelButtonText: cancel button text
-    ///   - delay: delay
-    ///   - timeLeft: time left Tinder Style
-    /// - Returns: Returns Responder
+	/// - Parameters:
+	///   - viewController: root view controller
+	///   - title: title
+	///   - text: text
+	///   - buttonText: button text
+	///   - cancelButtonText: cancel button text
+	///   - delay: delay
+	///   - timeLeft: time left Tinder Style
+	/// - Returns: Returns Responder
 	@discardableResult
 	open func danger(_ viewController: UIViewController,
 	                 title: String,
