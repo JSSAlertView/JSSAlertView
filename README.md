@@ -45,7 +45,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-##Cocoapods
+## Cocoapods
 
 JSSAlertView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -54,7 +54,7 @@ it, simply add the following line to your Podfile:
 pod 'JSSAlertView'
 ```
 
-##Carthage
+## Carthage
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. A minimum version of 0.17 is required.
 
