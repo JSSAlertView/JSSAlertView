@@ -61,7 +61,7 @@ pod 'JSSAlertView'
 To install, simply add the following lines to your Cartfile:
 
 ```ruby
-github "AndrewChernoev/JSSAlertView" "framework"
+github "JSSAlertView/JSSAlertView"
 ```
 
 ## Usage
