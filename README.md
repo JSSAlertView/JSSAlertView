@@ -5,6 +5,7 @@
 ![Swift3](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
 ![Swift2](http://img.shields.io/badge/swift-2.2-brightgreen.svg)
 [![Build Status](https://travis-ci.org/JSSAlertView/JSSAlertView.svg?branch=master)](https://travis-ci.org/JSSAlertView/JSSAlertView)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 [![License](https://img.shields.io/cocoapods/l/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 [![Platform](https://img.shields.io/cocoapods/p/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
@@ -45,11 +46,23 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+## Cocoapods
+
 JSSAlertView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'JSSAlertView'
+```
+
+## Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. A minimum version of 0.17 is required.
+
+To install, simply add the following lines to your Cartfile:
+
+```ruby
+github "JSSAlertView/JSSAlertView"
 ```
 
 ## Usage
