@@ -45,11 +45,23 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+##Cocoapods
+
 JSSAlertView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'JSSAlertView'
+```
+
+##Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. A minimum version of 0.17 is required.
+
+To install, simply add the following lines to your Cartfile:
+
+```ruby
+github "AndrewChernoev/JSSAlertView" "framework"
 ```
 
 ## Usage
