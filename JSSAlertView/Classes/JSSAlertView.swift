@@ -318,6 +318,7 @@ open class JSSAlertView: UIViewController {
 			} else {
 				buttonLabel.text = "OK"
 			}
+            dismissButton.accessibilityLabel = buttonLabel.text
 			dismissButton.addSubview(buttonLabel)
 
 			// Second cancel button
@@ -336,7 +337,7 @@ open class JSSAlertView: UIViewController {
 				cancelButtonLabel.numberOfLines = 1
 				cancelButtonLabel.textAlignment = .center
 				cancelButtonLabel.text = cancelButtonText
-
+                cancelButton.accessibilityLabel = cancelButtonText
 				cancelButton.addSubview(cancelButtonLabel)
 			}
 		}
