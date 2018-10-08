@@ -1,6 +1,6 @@
 # JSSAlertView
 
-
+![Swift4.2](http://img.shields.io/badge/swift-4.2-brightgreen.svg)
 ![Swift4](http://img.shields.io/badge/swift-4.0-brightgreen.svg)
 ![Swift3](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
 ![Swift2](http://img.shields.io/badge/swift-2.2-brightgreen.svg)
@@ -12,10 +12,16 @@
 
 
 # SWIFT Versions!
-For swift4 use:
+For swift4.2 use:
 
 ```
 pod 'JSSAlertView'
+```
+
+For swift4 use:
+
+```
+pod 'JSSAlertView', '~> 4.0.0'
 ```
 
 
