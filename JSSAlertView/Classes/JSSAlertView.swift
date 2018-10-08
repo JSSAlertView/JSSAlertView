@@ -131,7 +131,7 @@ open class JSSAlertView: UIViewController {
 
 		// position the title
 		let titleString = titleLabel.text! as NSString
-		let titleAttr = [NSAttributedStringKey.font: titleLabel.font!]
+		let titleAttr = [NSAttributedString.Key.font: titleLabel.font!]
 		let titleSize = CGSize(width: contentWidth, height: 90)
 		let titleRect = titleString.boundingRect(with: titleSize, options: .usesLineFragmentOrigin, attributes: titleAttr, context: nil)
 		yPos += padding
@@ -142,7 +142,7 @@ open class JSSAlertView: UIViewController {
 		// position text
 		if self.textView != nil {
 			let textString = textView.text! as NSString
-			let textAttr = [NSAttributedStringKey.font: textView.font!]
+			let textAttr = [NSAttributedString.Key.font: textView.font!]
 			let realSize = textView.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
 			let textSize = CGSize(width: contentWidth, height: CGFloat(fmaxf(Float(90.0), Float(realSize.height))))
 			let textRect = textString.boundingRect(with: textSize, options: .usesLineFragmentOrigin, attributes: textAttr, context: nil)
@@ -432,7 +432,7 @@ open class JSSAlertView: UIViewController {
 	/// Removes view from superview
 	func removeView() {
 		isAlertOpen = false
-		removeFromParentViewController()
+		removeFromParent()
 		view.removeFromSuperview()
 	}
 
@@ -442,7 +442,7 @@ open class JSSAlertView: UIViewController {
 	/// - Returns: root view controller size
 	func rootViewControllerSize() -> CGSize {
 		let size = rootViewController.view.frame.size
-		if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
+		if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIApplication.shared.statusBarOrientation.isLandscape {
 			return CGSize(width: size.height, height: size.width)
 		}
 		return size
@@ -454,7 +454,7 @@ open class JSSAlertView: UIViewController {
 	/// - Returns: screen size
 	func screenSize() -> CGSize {
 		let screenSize = UIScreen.main.bounds.size
-		if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation) {
+		if (NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIApplication.shared.statusBarOrientation.isLandscape {
 			return CGSize(width: screenSize.height, height: screenSize.width)
 		}
 		return screenSize
