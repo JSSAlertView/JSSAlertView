@@ -27,6 +27,13 @@ open class JSSAlertViewResponder {
 	open func addAction(_ action: @escaping ()->Void) {
 		self.alertview.addAction(action)
 	}
+    
+    ///
+    /// Handle text field
+    ///
+    open func addActionWithTextHandler(_ handler: @escaping(String?) -> Void) {
+        self.alertview.addActionWithTextHandler(handler)
+    }
 
 	/// Adds cancel action
 	///
@@ -75,7 +82,7 @@ open class JSSAlertViewResponder {
 
     
 	/// Close action to remove from superview
-	@objc func close() {
+    @objc func close(_ textField: String? = nil) {
 		self.alertview.closeView(false)
 	}
 }

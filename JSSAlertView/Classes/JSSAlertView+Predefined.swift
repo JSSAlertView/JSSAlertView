@@ -30,6 +30,7 @@ extension JSSAlertView {
 	               buttonText: String? = nil,
 	               cancelButtonText: String? = nil,
 	               delay: Double? = nil,
+                   textField: Bool = false,
 	               timeLeft: UInt? = nil) -> JSSAlertViewResponder {
 
 
@@ -42,6 +43,7 @@ extension JSSAlertView {
 		                     color: UIColorFromHex(0x3498db, alpha: 1),
 		                     iconImage: iconImage,
 		                     delay: delay,
+                             textField: textField,
 		                     timeLeft: timeLeft)
 
 
@@ -67,6 +69,7 @@ extension JSSAlertView {
 	                  buttonText: String? = nil,
 	                  cancelButtonText: String? = nil,
 	                  delay: Double?=nil,
+                      textField: Bool=false,
 	                  timeLeft: UInt? = nil) -> JSSAlertViewResponder {
 
 		return show(viewController,
@@ -78,6 +81,7 @@ extension JSSAlertView {
 		            color: UIColorFromHex(0x2ecc71, alpha: 1),
 		            iconImage: iconImage,
 		            delay: delay,
+                    textField: textField,
 		            timeLeft: timeLeft)
 
 	}
@@ -100,6 +104,7 @@ extension JSSAlertView {
 	                  buttonText: String? = nil,
 	                  cancelButtonText: String? = nil,
 	                  delay: Double?=nil,
+                      textField: Bool=false,
 	                  timeLeft: UInt? = nil) -> JSSAlertViewResponder {
 
 		return show(viewController,
@@ -111,6 +116,7 @@ extension JSSAlertView {
 		            color: UIColorFromHex(0xf1c40f, alpha: 1),
 		            iconImage: iconImage,
 		            delay: delay,
+                    textField: textField,
 		            timeLeft: timeLeft)
 
 	}
@@ -133,6 +139,7 @@ extension JSSAlertView {
 	                 buttonText: String? = nil,
 	                 cancelButtonText: String?=nil,
 	                 delay: Double?=nil,
+                     textField: Bool=false,
 	                 timeLeft: UInt? = nil) -> JSSAlertViewResponder {
 
 
@@ -145,6 +152,7 @@ extension JSSAlertView {
 		                     color: UIColorFromHex(0xe74c3c, alpha: 1),
 		                     iconImage: iconImage,
 		                     delay: delay,
+                             textField: textField,
 		                     timeLeft: timeLeft)
 		alertview.setTextTheme(.light)
 		return alertview
