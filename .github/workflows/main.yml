@@ -13,12 +13,5 @@ jobs:
       run: xcodebuild -workspace 'Example/JSSAlertView.xcworkspace' -scheme 'JSSAlertView-Example' -destination 'platform=iOS Simulator,name=iPhone 8' test
     - name: Build App
       run: xcodebuild -workspace 'Example/JSSAlertView.xcworkspace' -scheme 'JSSAlertView-Example' -destination 'generic/platform=iOS' -configuration Release build CODE_SIGNING_ALLOWED=NO
-    - name: CocoaPods Action
-      uses: ty0x2333/cocoapods-action@0.2.0
-      with:
-        # .xcworkspace file
-        workspace: Example/JSSAlertView.xcworkspace
-        # Shared scheme
-        scheme: JSSAlertView-Example
-        # Use modern build system
-        use_modern_build_system: true
+    - name: Lint Podspec
+      run: pod lib lint JSSAlertView.podspec
