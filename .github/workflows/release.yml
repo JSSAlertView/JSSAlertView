@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  create:
+    tags:
+      - *
+
+jobs:
+  build:
+
+    runs-on: macOS-latest
+
+    - name: Lint Podspec
+      run: pod lib lint JSSAlertView.podspec
+    - name: Push Trunk
+      run: pod trunk push JSSAlertView.podspec
