@@ -15,4 +15,6 @@ jobs:
     - name: Lint Podspec
       run: pod lib lint JSSAlertView.podspec
     - name: Push Trunk
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
       run: pod trunk push JSSAlertView.podspec
