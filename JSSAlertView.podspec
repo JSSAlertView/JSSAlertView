@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'JSSAlertView'
-s.version          = '5.0.0'
+s.version          = '5.0.1'
 s.summary          = 'Custom HUD, with buttons supporting themes and Tinder like countdown'
 s.description      = <<-DESC
 A custom modal alert view
