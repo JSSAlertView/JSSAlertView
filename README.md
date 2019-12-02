@@ -1,10 +1,11 @@
 # JSSAlertView
 
+![Swift5](http://img.shields.io/badge/swift-5-brightgreen.svg)
 ![Swift4.2](http://img.shields.io/badge/swift-4.2-brightgreen.svg)
 ![Swift4](http://img.shields.io/badge/swift-4.0-brightgreen.svg)
 ![Swift3](http://img.shields.io/badge/swift-3.0-brightgreen.svg)
 ![Swift2](http://img.shields.io/badge/swift-2.2-brightgreen.svg)
-[![Build Status](https://travis-ci.org/JSSAlertView/JSSAlertView.svg?branch=master)](https://travis-ci.org/JSSAlertView/JSSAlertView)
+[![Build Status](https://github.com/JSSAlertView/JSSAlertView/workflows/CI/badge.svg)](https://github.com/JSSAlertView/JSSAlertView/workflows/CI/badge.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
 [![License](https://img.shields.io/cocoapods/l/JSSAlertView.svg?style=flat)](http://cocoapods.org/pods/JSSAlertView)
@@ -12,10 +13,16 @@
 
 
 # SWIFT Versions!
-For swift4.2 use:
+For swift5 use:
 
 ```
 pod 'JSSAlertView'
+```
+
+For swift4.2 use:
+
+```
+pod 'JSSAlertView', '~> 4.2.0'
 ```
 
 For swift4 use:
@@ -42,7 +49,7 @@ A custom "modal" alert view for iOS 7+ written in Swift, with a couple basic the
 
 ## Try out (Over Cocoapods)
 
-```shell 
+```shell
 pod try JSSAlertView
 ```
 
@@ -80,7 +87,7 @@ import JSSAlertView
 ```
 
 
-The most minimal alert just has a title. 
+The most minimal alert just has a title.
 
 ```swift
 JSSAlertView().show(
@@ -105,8 +112,8 @@ Besides the default `show()` method you can call any of four alert themes: `info
 
 ```swift
 JSSAlertView().success(
-  self, 
-  title: "Great success", 
+  self,
+  title: "Great success",
   text: "This is the built-in .success style"
 )
 ```
@@ -117,11 +124,11 @@ You can customize button text, add a custom icon and customize the alert color.
 var customIcon:UIImage! // your custom icon UIImage
 var customColor:UIColor! // base color for the alert
 JSSAlertView().show(
-  self, 
-  title: "Another alert", 
-  text: "An alert with more customizations.", 
-  buttonText: "Right on", 
-  color: customColor, 
+  self,
+  title: "Another alert",
+  text: "An alert with more customizations.",
+  buttonText: "Right on",
+  color: customColor,
   iconImage: customIcon)
 ```
 
@@ -139,11 +146,11 @@ JSSAlertView().show(
 You can also provide a callback function to run after the alert is dismissed, specify custom fonts and change the alert's text color from dark to light.
 
 ```swift
-func myCallback() { 
+func myCallback() {
   // this'll run after the alert is dismissed
 }
-var alertview = JSSAlertView().show(self, 
-  title: "Yet another alert", 
+var alertview = JSSAlertView().show(self,
+  title: "Yet another alert",
   text: "Callbacks, fonts and text colors"
 )
 alertview.addAction(myCallback) // Method to run after dismissal
@@ -160,9 +167,9 @@ func myCancelCallback() {
   // this'll run if cancel is pressed after the alert is dismissed
 }
 var alertview = JSSAlertView().show(
-  self, 
+  self,
   title: "I'm an alert",
-  text: "An alert with two buttons. Dismiss by tapping the left, and do something else by tapping the right.", 
+  text: "An alert with two buttons. Dismiss by tapping the left, and do something else by tapping the right.",
   buttonText: "OK",
   cancelButtonText: "Cancel" // This tells JSSAlertView to create a two-button alert
 )
