@@ -10,9 +10,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run tests
-      run: xcodebuild -project 'Example/JSSAlertView.xcworkspace' -scheme 'JSSAlertView-Example' -destination 'platform=iOS Simulator,name=iPhone 8' test
+      run: xcodebuild -workspace 'Example/JSSAlertView.xcworkspace' -scheme 'JSSAlertView-Example' -destination 'platform=iOS Simulator,name=iPhone 8' test
     - name: Build App
-      run: xcodebuild -project 'Example/JSSAlertView.xcworkspace' -scheme 'JSSAlertView-Example' -destination 'generic/platform=iOS' -configuration Release build CODE_SIGNING_ALLOWED=NO
+      run: xcodebuild -workspace 'Example/JSSAlertView.xcworkspace' -scheme 'JSSAlertView-Example' -destination 'generic/platform=iOS' -configuration Release build CODE_SIGNING_ALLOWED=NO
     - name: CocoaPods Action
       uses: ty0x2333/cocoapods-action@0.2.0
       with:
@@ -22,5 +22,3 @@ jobs:
         scheme: JSSAlertView-Example
         # Use modern build system
         use_modern_build_system: true
-
-
