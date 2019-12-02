@@ -1,9 +1,9 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - refs/tags/*
+  create:
+    tags:
+      - /.*/
 
 jobs:
   build:
